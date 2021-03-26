@@ -1,5 +1,5 @@
 t = int(input("input time:"))
-v = int(input("input Vasya's sspeed:"))
+v = int(input("input Vasya's speed:"))
 z = v * t
 if v > 0 and 100 > z > 0:
     print("Vasia is at", z, "'th km")
