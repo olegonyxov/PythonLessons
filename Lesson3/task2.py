@@ -10,7 +10,7 @@ print('первая цифра после десятичной точки:', xl[
 # xl = xl -y
 # тоже нет
 # y1 = float(xl1)
-# z1 = abs(y1) - int(y1))
+# z1 = abs(y1) - abs(int(y1))
 # print(z1)
 # z1 = str(z1)
 # z1 = list(z1)
