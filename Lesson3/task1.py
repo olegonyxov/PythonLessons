@@ -1,4 +1,4 @@
-x = input("input 3 Digit number:")
-x = list(x)
-x = int(x[0]) + int(x[1]) + int(x[2])
-print(x)
+inum = input("input 3 Digit number:")
+answ = sum([int(xs) for xs in inum])
+print(answ)
+
