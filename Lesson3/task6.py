@@ -1,7 +1,7 @@
-xs = int(input("input x start"))
-ys = int(input("input y start"))
-x2 = int(input("input x coord 2"))
-y2 = int(input('input y coord 2'))
+xs = int(input("input x start:"))
+ys = int(input("input y start:"))
+x2 = int(input("input x coord 2:"))
+y2 = int(input("input y coord 2:"))
 success1 = 0
 success2 = 0
 if 0 < xs and ys and x2 and y2 < 8:
