@@ -7,6 +7,5 @@ y = 1
 while n <= x1:
     y = y * n
     n = n + 1
-    continue
 print('факториал числа', x1, '=', y)
 # print(time.time()-xtime)
