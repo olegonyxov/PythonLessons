@@ -1,4 +1,4 @@
-i = 1
+xi = 1
 n = 1
 xlist = list()
 while xi != 0:
@@ -7,7 +7,7 @@ while xi != 0:
     n = n + 1
 print('количество введенных чисел', n - 1)
 sumx = sum((int(x1) for x1 in xlist))
-print('сумма равна',sumx)
+print('сумма равна', sumx)
 xlist = xlist[0:-1]
 m = 0
 s = 1
@@ -21,4 +21,13 @@ for i in xlist:
     if i > xlist[m]:
         i = xlist[m]
         m = m + 1
-print('наибольшее число :',xlist[m],'под индексом ', m)
+print('наибольшее число :', xlist[m], 'под индексом ', m)
+evenlist = list()
+oddlist = list()
+for i in xlist:
+    if i % 2 == 0:
+        evenlist.append(i)
+    else:
+        oddlist.append(i)
+print('количество четных чисел =', len(evenlist))
+print('количество нечетных чисел =', len(oddlist))
