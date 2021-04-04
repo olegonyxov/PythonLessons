@@ -21,5 +21,6 @@ for i in xlist:
     if i > xlist[m]:
         i = xlist[m]
         m = m + 1
-        print('наибольшее число :',xlist[m],'под индексом ', m)
+print('наибольшее число :',xlist[m],'под индексом ', m)
+
 
