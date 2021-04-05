@@ -2,7 +2,7 @@ xi = 1
 n = 1
 xlist = list()
 while xi != 0:
-    xi = int(input('input x :'))
+    xi = int(input('введите числа:'))
     xlist.append(xi)
     n = n + 1
 print('количество введенных чисел:', n - 2)
