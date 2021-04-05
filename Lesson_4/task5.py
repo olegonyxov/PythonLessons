@@ -1,4 +1,5 @@
-xstr = '0123456789'
+# xstr ='0123456789'
+xstr =input("input some string:")
 print(type(xstr))
 print(xstr[2])
 print(xstr[-2])
