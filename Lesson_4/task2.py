@@ -16,12 +16,8 @@ while m < int(len(xlist)):
     m = m + 1
 print('произведение равно:', s)
 print('среднее арифметическое равно', sumx / int(len(xlist)))
-m = 0
-for i in xlist:
-    if i > xlist[m]:
-        i = xlist[m]
-        m = m + 1
-print('наибольшее число :', xlist[m], 'под индексом ', m)
+print('наибольшее число :', max(xlist), 'под индексом ', xlist.index(max(xlist)))
+
 evenlist = list()
 oddlist = list()
 for i in xlist:
@@ -31,4 +27,12 @@ for i in xlist:
         oddlist.append(i)
 print('количество четных чисел =', len(evenlist))
 print('количество нечетных чисел =', len(oddlist))
+x1list = list(set(xlist))
+x1list.remove(max(x1list))
+print('второе по величине чмсло', max(x1list))
+rlist = list()
+for i in xlist:
+    if i == max(xlist):
+        rlist.append(i)
+print('количество элементов равных максимальному:', len(rlist))
 
