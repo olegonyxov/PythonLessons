@@ -31,3 +31,4 @@ for i in xlist:
         oddlist.append(i)
 print('количество четных чисел =', len(evenlist))
 print('количество нечетных чисел =', len(oddlist))
+
