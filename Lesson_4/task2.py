@@ -5,7 +5,7 @@ while xi != 0:
     xi = int(input('input x :'))
     xlist.append(xi)
     n = n + 1
-print('количество введенных чисел', n - 1)
+print('количество введенных чисел', n - 2)
 sumx = sum((int(x1) for x1 in xlist))
 print('сумма равна', sumx)
 xlist = xlist[0:-1]
@@ -35,4 +35,3 @@ for i in xlist:
     if i == max(xlist):
         rlist.append(i)
 print('количество элементов равных максимальному:', len(rlist))
-
