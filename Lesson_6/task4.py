@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 f = open('C:/acdc.json', 'r')
 album = json.load(f)
@@ -18,3 +19,4 @@ del elist[0]
 print(elist)
 lsum=sum([int(xs) for xs in elist])
 print(lsum)
+
