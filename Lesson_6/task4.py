@@ -1,10 +1,12 @@
-import json
 import datetime
-from nested_lookup import nested_lookup
+import json
 
-with open('C:/acdc.json', 'r') as f:
-    album = json.load(f)
-    results = nested_lookup(key='duration', document=album, wild=True)
-    sumres = sum([int(xs) for xs in results])
+result = list()
+with open('C:/acdc.json', 'r') as f1:
+    allalbum = json.load(f1)
+    print(f1.read())
+    for i in allalbum['album']['tracks']['track']:
+        result.append(i['duration'])
+sumres = sum([int(xs) for xs in result])
 print(sumres)
 print(str(datetime.timedelta(seconds=sumres)))
