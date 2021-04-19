@@ -1,15 +1,14 @@
 isring = str(input('Input some string :'))
-
-
-def byw(ff):
-    global isring
-    isring = isring.split(' ')
-    return ff
+# isring = 'asdas asd as dasd asd'
+def byw(fnc):
+    pl = fnc().split(' ')
+    print(pl)
+    return fnc
 
 
 @byw
-def printw():
-    print(isring)
+def first():
+    return isring
 
 
-printw()
+first()
