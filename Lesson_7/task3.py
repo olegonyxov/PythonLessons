@@ -6,9 +6,9 @@ url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Odesa&cnt=5&units
 response = requests.get(url).json()
 # print(response)
 # print(response.keys())
-print(response['list'])
 for i in response['list']:
     print(i['dt'], (i['temp']['day']), (i['feels_like']['day']))
-    # print(str(datetime.timedelta(seconds=i['dt'])))
+    # day_z = (datetime.timedelta(seconds=i['dt']))
+    # print(day_z.strtime())
 
 
