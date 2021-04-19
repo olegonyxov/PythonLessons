@@ -1,15 +1,16 @@
-isring = str(input('Input some string :'))
+# isring = str(input('Input some string :'))
+isring = "fgsd df jg gjdf"
 
-
-def byw(ff):
-    global isring
-    isring = isring.split(' ')
-    return ff
+def byw(printw):
+    # global isring
+    # isring = isring.split(' ')
+    # return ff
+    return printw().split(' ')
 
 
 @byw
 def printw():
-    print(isring)
+    return(isring)
 
 
 printw()
