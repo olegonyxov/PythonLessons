@@ -9,5 +9,5 @@ response = requests.get(url).json()
 # print(response['list'])
 for i in response['list']:
     print(i['dt'], (i['temp']['day']), (i['feels_like']['day']))
-    # print(str(datetime.timedelta(seconds=i['dt'])))
+    print(str(datetime.timedelta(hours=i['dt'])))
 
