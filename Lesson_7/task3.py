@@ -7,8 +7,7 @@ response = requests.get(url).json()
 # print(response)
 # print(response.keys())
 for i in response['list']:
-    print(i['dt'], (i['temp']['day']), (i['feels_like']['day']))
-    # day_z = (datetime.timedelta(seconds=i['dt']))
-    # print(day_z.strtime())
+    day_z = datetime.datetime.fromtimestamp(i['dt'])
+    print(day_z, (i['temp']['day']), (i['feels_like']['day']))
 
 
