@@ -1,16 +1,17 @@
 import datetime
-
+import urllib
 import requests
 
 iday = str(input("Введите количество дней:"))
 icity = str(input('Введите название города:'))
-pars = {'q': icity, 'cnt': iday}  # https://pythonru.com/biblioteki/kratkoe-rukovodstvo-po-biblioteke-python-requests
+pars = {'cnt': iday,'q': icity}  # https://pythonru.com/biblioteki/kratkoe-rukovodstvo-po-biblioteke-python-requests
 f2 = open('C:/tr1/t7_3.txt', 'w+')
 # раз сказали что можно криво
 f2.writelines('Дата   Температура днем  По ощ.   Ночью')
-url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Odesa&cnt=5&units=metric&appid=f9ada9efec6a3934dad5f30068fdcbb8"
+url = "http://api.openweathermap.org/data/2.5/forecast/daily?units=metric&appid=f9ada9efec6a3934dad5f30068fdcbb8"
 response = requests.get(url, params=pars)  # с params работает через раз, походу задракоили сайт
 response = response.json()
+# print(response)
 for i in response['list']:
     day_z = str(datetime.datetime.fromtimestamp(i['dt']))
     zline = day_z[0:10], "   ", (i['temp']['day']), "   ", (i['feels_like']['day'], "   ", (i['temp']['night']))
