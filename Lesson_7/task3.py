@@ -9,7 +9,7 @@ f2 = open('C:/tr1/t7_3.txt', 'w+')
 # раз сказали что можно криво
 f2.writelines('Дата   Температура днем  По ощ.   Ночью')
 url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Odesa&cnt=5&units=metric&appid=f9ada9efec6a3934dad5f30068fdcbb8"
-response = requests.get(url, params=pars)  # с params работает через раз походу задракоили сайт
+response = requests.get(url, params=pars)  # с params работает через раз, походу задракоили сайт
 response = response.json()
 for i in response['list']:
     day_z = str(datetime.datetime.fromtimestamp(i['dt']))
