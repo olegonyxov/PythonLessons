@@ -11,7 +11,6 @@ f2.writelines('Дата   Температура днем  По ощ.   Ночь
 url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=Odesa&cnt=5&units=metric&appid=f9ada9efec6a3934dad5f30068fdcbb8"
 response = requests.get(url, params=pars)  # с params работает через раз походу задракоили сайт
 response = response.json()
-print(response)
 for i in response['list']:
     day_z = str(datetime.datetime.fromtimestamp(i['dt']))
     zline = day_z[0:10], "   ", (i['temp']['day']), "   ", (i['feels_like']['day'], "   ", (i['temp']['night']))
