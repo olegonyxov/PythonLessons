@@ -1,5 +1,4 @@
 import datetime
-import urllib
 import requests
 
 iday = str(input("Введите количество дней:"))
@@ -9,7 +8,7 @@ f2 = open('C:/tr1/t7_3.txt', 'w+')
 # раз сказали что можно криво
 f2.writelines('Дата   Температура днем  По ощ.   Ночью')
 url = "http://api.openweathermap.org/data/2.5/forecast/daily?units=metric&appid=f9ada9efec6a3934dad5f30068fdcbb8"
-response = requests.get(url, params=pars)  # с params работает через раз, походу задракоили сайт
+response = requests.get(url, params=pars)
 response = response.json()
 # print(response)
 for i in response['list']:
