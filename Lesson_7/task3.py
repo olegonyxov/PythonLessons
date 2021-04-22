@@ -1,22 +1,31 @@
 import datetime
+
 import requests
 
 iday = str(input("Введите количество дней:"))
 icity = str(input('Введите название города:'))
-pars = {'cnt': iday,'q': icity}  # https://pythonru.com/biblioteki/kratkoe-rukovodstvo-po-biblioteke-python-requests
-f2 = open('C:/tr1/t7_3.txt', 'w+')
-# раз сказали что можно криво
-f2.writelines('Дата   Температура днем  По ощ.   Ночью')
-url = "http://api.openweathermap.org/data/2.5/forecast/daily?units=metric&appid=f9ada9efec6a3934dad5f30068fdcbb8"
+url = "http://api.openweathermap.org/data/2.5/forecast/daily"
+pars = {'cnt': iday, 'q': icity, 'units': 'metric', 'appid': 'f9ada9efec6a3934dad5f30068fdcbb8'}
 response = requests.get(url, params=pars)
 response = response.json()
-# print(response)
-for i in response['list']:
-    day_z = str(datetime.datetime.fromtimestamp(i['dt']))
-    zline = day_z[0:10], "   ", (i['temp']['day']), "   ", (i['feels_like']['day'], "   ", (i['temp']['night']))
-    zline = str(zline).replace(",", "").replace("'", "").replace(')', "").replace('(', "")
-    f2.writelines("\n")
-    f2.writelines(zline)
-f2 = open('C:/tr1/t7_3.txt', 'r')
-print(f2.read())
-f2.close()
+
+def makefile(ff):
+    global f2
+    filename = str('C:\\tr1\\' + str(datetime.date.today()) +"-"+icity+"-" + iday + '-days-weather-forecast.txt')
+    with open(filename, "w") as f2:  # создаем или перезаписываем
+        f2.writelines('Дата   Температура днем По ощ.  Ночью')
+        ff()
+        return f2
+
+
+@makefile
+def makelines():
+    for i in response['list']:
+        day_z = str(datetime.date.fromtimestamp(i['dt']))
+        datalines = str(day_z + '\t' + str(i['temp']['day'])
+                        + '\t' + str(i['feels_like']['day']) + '\t' + str(i['temp']['night']))
+        f2.writelines("\n")
+        f2.writelines(datalines)
+
+
+print(makelines)  # ооздаем и проверяем имя и путь (печатать в условии нет)
