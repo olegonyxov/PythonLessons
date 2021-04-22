@@ -1,5 +1,4 @@
 import datetime
-
 import requests
 
 iday = str(input("Введите количество дней:"))
