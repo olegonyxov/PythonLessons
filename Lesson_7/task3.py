@@ -1,4 +1,5 @@
 import datetime
+
 import requests
 
 iday = str(input("Введите количество дней:"))
@@ -8,9 +9,10 @@ pars = {'cnt': iday, 'q': icity, 'units': 'metric', 'appid': 'f9ada9efec6a3934da
 response = requests.get(url, params=pars)
 response = response.json()
 
+
 def makefile(ff):
     global f2  # просто обьявить без заморочек
-    filename = str('C:\\tr1\\' + str(datetime.date.today()) +"-"+icity+"-" + iday + '-days-weather-forecast.txt')
+    filename = str('C:\\tr1\\' + str(datetime.date.today()) + "-" + icity + "-" + iday + '-days-weather-forecast.txt')
     with open(filename, "w") as f2:  # создаем или перезаписываем
         f2.writelines('Дата   Температура днем По ощ.  Ночью')
         ff()
