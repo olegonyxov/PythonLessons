@@ -1,5 +1,4 @@
 import datetime
-
 import requests
 
 iday = str(input("Введите количество дней:"))
@@ -10,7 +9,7 @@ response = requests.get(url, params=pars)
 response = response.json()
 
 def makefile(ff):
-    global f2
+    global f2  # просто обьявить без заморочек
     filename = str('C:\\tr1\\' + str(datetime.date.today()) +"-"+icity+"-" + iday + '-days-weather-forecast.txt')
     with open(filename, "w") as f2:  # создаем или перезаписываем
         f2.writelines('Дата   Температура днем По ощ.  Ночью')
@@ -28,4 +27,4 @@ def makelines():
         f2.writelines(datalines)
 
 
-print(makelines)  # ооздаем и проверяем имя и путь (печатать в условии нет)
+print(makelines)  # создаем и проверяем имя и путь (печатать в условии нет)
