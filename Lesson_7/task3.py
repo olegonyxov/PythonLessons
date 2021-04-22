@@ -20,8 +20,8 @@ def makefile(ff):
 @makefile
 def makelines():
     for i in response['list']:
-        day_z = str(datetime.date.fromtimestamp(i['dt']))
-        datalines = str(day_z + '\t' + str(i['temp']['day'])
+        dayz = str(datetime.date.fromtimestamp(i['dt']))
+        datalines = str(dayz + '\t' + str(i['temp']['day'])
                         + '\t' + str(i['feels_like']['day']) + '\t' + str(i['temp']['night']))
         f2.writelines("\n")
         f2.writelines(datalines)
