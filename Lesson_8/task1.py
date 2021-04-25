@@ -11,7 +11,6 @@ input_date = '2021-04-23'
 start_date = datetime.strptime(input_date, '%Y-%m-%d')
 today_date = datetime.now()
 daylist = list()
-finall = list()
 url = 'https://api.exchangerate.host/convert'
 
 
@@ -29,7 +28,6 @@ def make_daylist():
     while fake_date <= today_date:
         daylist.append(fake_date.date())
         fake_date += timedelta(1)
-    return daylist
 
 
 def getresponse():
