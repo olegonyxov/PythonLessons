@@ -7,7 +7,7 @@ url = "http://api.openweathermap.org/data/2.5/forecast/daily"
 pars = {'cnt': iday, 'q': icity, 'units': 'metric', 'appid': 'f9ada9efec6a3934dad5f30068fdcbb8'}
 response = requests.get(url, params=pars)
 response = response.json()
-
+print(response)  # проверяем ответ
 
 def makefile(ff):
     global f2  # просто обьявить без заморочек
