@@ -20,10 +20,10 @@ if __name__ == "__main__":
     parser.add_argument('inputincur')
     parser.add_argument('outcur')
     parser.add_argument('amcur')
-    some = parser.parse_args()
-    some_l = vars(some)
+    args = parser.parse_args()
+    argsdict = vars(args)
 
-    print(some)
+    print(type(argsdict['inputincur']))
     # print(type(vars(some)))
     # print(some_l['input'])
 
