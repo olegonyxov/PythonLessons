@@ -17,10 +17,14 @@ import argparse
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="currency_checker")
-    parser.add_argument('incur')
-    some=parser.parse_args()
-
+    parser.add_argument('inputincur')
+    parser.add_argument('outcur')
+    parser.add_argument('amcur')
+    some = parser.parse_args()
+    some_l = vars(some)
 
     print(some)
+    # print(type(vars(some)))
+    # print(some_l['input'])
 
 
