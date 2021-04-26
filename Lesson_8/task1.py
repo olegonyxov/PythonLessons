@@ -7,7 +7,7 @@ import requests
 parser = argparse.ArgumentParser(description="currency_checker")
 parser.add_argument('inputincur',default='USD')
 parser.add_argument('outcur',default='UAH')
-parser.add_argument('amcur',default='100')
+parser.add_argument('amcur',default=str(datetime.now().date))
 parser.add_argument('start_date')
 args = parser.parse_args()
 argsdict = vars(args)
