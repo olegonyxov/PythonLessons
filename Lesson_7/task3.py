@@ -1,31 +1,44 @@
-import datetime
+import datetime as dt
 import requests
 
-iday = str(input("Введите количество дней:"))
+idays = str(input("Введите количество дней:"))
 icity = str(input('Введите название города:'))
 url = "http://api.openweathermap.org/data/2.5/forecast/daily"
-pars = {'cnt': iday, 'q': icity, 'units': 'metric', 'appid': 'f9ada9efec6a3934dad5f30068fdcbb8'}
+pars = {'cnt': idays, 'q': icity, 'units': 'metric', 'appid': 'f9ada9efec6a3934dad5f30068fdcbb8'}
 response = requests.get(url, params=pars)
 response = response.json()
-print(response)  # проверяем ответ
-
-def makefile(ff):
-    global f2  # просто обьявить без заморочек
-    filename = str('C:\\tr1\\' + str(datetime.date.today()) + "-" + icity + "-" + iday + '-days-weather-forecast.txt')
-    with open(filename, "w") as f2:  # создаем или перезаписываем
-        f2.writelines('Дата   Температура днем По ощ.  Ночью')
-        ff()
-        return f2
+datelist = list()
 
 
-@makefile
-def makelines():
-    for i in response['list']:
-        dayz = str(datetime.date.fromtimestamp(i['dt']))
-        datalines = str(dayz + '\t' + str(i['temp']['day'])
-                        + '\t' + str(i['feels_like']['day']) + '\t' + str(i['temp']['night']))
-        f2.writelines("\n")
-        f2.writelines(datalines)
+def make_datelist():
+    for day in response['list']:
+        daydate = dt.date.fromtimestamp(day['dt'])
+        daydate = dt.date.strftime(daydate, '%Y-%m-%d')
+        datelist.append(daydate)
 
 
-print(makelines)  # создаем и проверяем имя и путь (печатать в условии нет)
+def make_name():
+    filename = 'C:\\tr1\\'
+    templist = datelist[1], icity, idays, 'days', 'weather', 'forecast'
+    filename = filename + "-".join(templist) + ".txt"
+    return filename
+
+
+def make_file():
+    with open(make_name(), 'w') as file:
+        file.writelines('Дата   Температура днем По ощ.  Ночью')
+        file.writelines('\n')
+        i = 0
+        for day in response['list']:
+            daytd = str(day['temp']['day'])
+            dayfl = str(day['feels_like']['day'])
+            daytn = str(day['temp']['night'])
+            daywath = datelist[i] + '\t' + daytd + '\t' + dayfl + '\t' + daytn
+            i = i + 1
+            file.writelines(daywath)
+            file.writelines("\n")
+
+if __name__ == '__main__':
+    make_datelist()
+    make_name()
+    make_file()
