@@ -1,9 +1,15 @@
-inp = input('Введите число, затем тип температуры :')
-te = int(inp[0:-1])
-if inp[-1] == 'C':
-    print('Цельсий:', (te * 1), 'Фарингейт:', (te * 1.8 + 32), 'Кельвин', (te + 273.15))
-elif inp[-1] == 'F':
-    print('Цельсий:', float('{0:.2f}'.format((te - 32) / 1.8)), 'Фарингейт:', (te * 1), 'Кельвин',
-          float('{0:.2f}'.format(((te - 32) / 1.8) + 273.15)))
-elif inp[-1] == 'K':
-    print('Цельсий:', (te - 273.15), 'Фарингейт:', ((te - 273.15) * 1.8 + 32), 'Кельвин', (te * 1))
+inp_temp = float(input('temp:'))
+inp_scale = str(input('scale:'))
+if inp_scale == 'K':
+    K = int(inp_temp)
+    C = K - 273.5
+    F = K * 1.8 - 459.67
+if inp_scale == "C":
+    C = int(inp_temp)
+    K = C + 273.5
+    F = K * 1.8 - 459.67
+if inp_scale == "F":
+    F = int(inp_temp)
+    K = (F + 459.67) / 1.8
+    C = K - 273.5
+print('Цельсий:', int(C), 'Фарингейт:', int(F), 'Кельвин:', int(K))
