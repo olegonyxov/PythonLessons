@@ -2,14 +2,15 @@ import argparse
 import csv
 
 parser = argparse.ArgumentParser(description="find_a_car")
+parser.add_argument('--o')
 parser.add_argument('--year', default=None, nargs='?')
 parser.add_argument('--brand', default=None, nargs='?')
 parser.add_argument('--color', default=None, nargs='?')
 parser.add_argument('--fuel', default=None, nargs='?')
-parser.add_argument('--reg_num', default=1, nargs='?')
+parser.add_argument('--reg_num',action='store_true')
 args = parser.parse_args()
 argsdict = vars(args)
-
+datafile = str('C:\\tr1\\'+argsdict['o'])
 brand = argsdict['brand']
 color = argsdict['color']
 year = argsdict['year']
@@ -20,18 +21,20 @@ finlist = list()
 
 
 def make_list():
-    with open('C:\\tr1\\tz_opendata_z01012021_po01042021.csv', "r", encoding='utf-8') as f1:
+    with open(datafile, "r", encoding='utf-8') as f1:
         csv_reader = csv.reader(f1, delimiter=';')
         for row in csv_reader:
-            for var in varlist:
-                if var in row:
-                    templist = list()
-                    if reg_num == None and row[18] != "":
-                        templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
-                        finlist.append(*templist)
-                    else:
-                        templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
-                        finlist.append(*templist)
+            if brand in row or brand == None:
+                if color in row or color == None:
+                    if fuel in row or fuel == None:
+                        if year in row or year == None:
+                            templist = list()
+                            if reg_num == True and row[18] != "":
+                                templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
+                                finlist.append(*templist)
+                            else:
+                                templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
+                                finlist.append(*templist)
 
 
 def make_name():
@@ -66,3 +69,4 @@ if __name__ == '__main__':
         make_name()
         make_file()
         readfile()
+    print(reg_num)
