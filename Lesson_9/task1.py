@@ -52,7 +52,7 @@ def make_file():
 
 
 def readfile():
-    with open('C:\\tr1\\newfile.csv', "r", encoding='utf-8') as f3:
+    with open(make_name(), "r", encoding='utf-8') as f3:
         csv_reader2 = csv.DictReader(f3)
         for i in csv_reader2:
             print(i)
@@ -60,7 +60,7 @@ def readfile():
 
 if __name__ == '__main__':
     if brand == None and color == None and year == None and fuel == None:
-        print("please enter parameters")
+        print("Please enter parameters")
     else:
         make_list()
         make_name()
