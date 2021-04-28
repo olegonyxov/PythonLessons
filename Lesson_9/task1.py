@@ -7,10 +7,10 @@ parser.add_argument('--year', default=None, nargs='?')
 parser.add_argument('--brand', default=None, nargs='?')
 parser.add_argument('--color', default=None, nargs='?')
 parser.add_argument('--fuel', default=None, nargs='?')
-parser.add_argument('--reg_num', action='store_true')
+parser.add_argument('--reg_num',action='store_true')
 args = parser.parse_args()
 argsdict = vars(args)
-datafile = str('C:\\tr1\\' + argsdict['o'])
+datafile = str('C:\\tr1\\'+argsdict['o'])
 brand = argsdict['brand']
 color = argsdict['color']
 year = argsdict['year']
@@ -29,13 +29,14 @@ def make_list():
                     if fuel in row or fuel == None:
                         if year in row or year == None:
                             templist = list()
-                            if reg_num == True and row[-1] != "":
+                            if reg_num == True and row[-1] !="":
                                 templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
                                 finlist.append(*templist)
 
-                            elif reg_num == False:
+                            elif reg_num ==False:
                                 templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
                                 finlist.append(*templist)
+
 
 
 def make_name():
