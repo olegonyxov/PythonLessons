@@ -29,12 +29,14 @@ def make_list():
                     if fuel in row or fuel == None:
                         if year in row or year == None:
                             templist = list()
-                            if reg_num == True and row[18] != "":
+                            if reg_num == True and row[-1] !="":
                                 templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
                                 finlist.append(*templist)
-                            else:
+
+                            elif reg_num ==False:
                                 templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
                                 finlist.append(*templist)
+
 
 
 def make_name():
@@ -69,4 +71,3 @@ if __name__ == '__main__':
         make_name()
         make_file()
         readfile()
-    print(reg_num)
