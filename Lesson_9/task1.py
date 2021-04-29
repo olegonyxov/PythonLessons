@@ -4,30 +4,26 @@ import csv
 
 def make_list():
     datafile = str('C:\\tr1\\' + argsdict['o'])
+    reg_num = argsdict['reg_num']
     with open(datafile, "r", encoding='utf-8') as f1:
         csv_reader = csv.reader(f1, delimiter=';')
         for row in csv_reader:
-            if brand in row or brand is None:
-                if color in row or color is None:
-                    if fuel in row or fuel is None:
-                        if year in row or year is None:
-                            templist = []
-                            if reg_num is True and row[-1] != "":
-                                templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
-                                finlist.append(*templist)
-
-                            elif reg_num is False:
-                                templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
-                                finlist.append(*templist)
+            if all(var in row for var in varlist):
+                templist = []
+                if reg_num is True and row[-1] != "":
+                    templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
+                    finlist.append(*templist)
+                elif reg_num is False:
+                    templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
+                    finlist.append(*templist)
 
 
 def make_name():
     filename = 'C:\\tr1\\'
     templist = []
     for var in varlist:
-        if var is not None:
-            templist.append(var)
-    filename = filename + '-'.join(templist)
+        templist.append(var)
+    filename = filename + '-'.join(templist)+".csv"
     return filename
 
 
@@ -38,11 +34,10 @@ def make_file():
         csv_writer.writerows(finlist)
 
 
-def readfile():
-    with open(make_name(), "r", encoding='utf-8') as f3:
-        csv_reader2 = csv.DictReader(f3)
-        for i in csv_reader2:
-            print(i)
+def clean_vars():
+    for var in varlist:
+        if var is None:
+            varlist.remove(var)
 
 
 if __name__ == '__main__':
@@ -55,17 +50,12 @@ if __name__ == '__main__':
     parser.add_argument('--reg_num', action='store_true')
     args = parser.parse_args()
     argsdict = vars(args)
-    brand = argsdict['brand']
-    color = argsdict['color']
-    year = argsdict['year']
-    fuel = argsdict['fuel']
-    reg_num = argsdict['reg_num']
-    varlist = [brand, year, color, fuel]
+    varlist = [argsdict['brand'], argsdict['year'], argsdict['color'], argsdict['fuel']]
     finlist = []
     if all(var is None for var in varlist):
         print("Please enter parameters")
     else:
+        clean_vars()
         make_list()
         make_name()
         make_file()
-        readfile()
