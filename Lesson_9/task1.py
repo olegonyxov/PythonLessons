@@ -62,7 +62,7 @@ if __name__ == '__main__':
     reg_num = argsdict['reg_num']
     varlist = [brand, year, color, fuel]
     finlist = []
-    if (var for var in varlist) is None:
+    if brand is None and year is None and color is None and fuel is None:
         print("Please enter parameters")
     else:
         make_list()
