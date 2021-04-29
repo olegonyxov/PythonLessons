@@ -59,4 +59,3 @@ if __name__ == '__main__':
         make_list()
         make_name()
         make_file()
-
