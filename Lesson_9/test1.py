@@ -4,6 +4,7 @@ import csv
 
 def make_list():
     datafile = str('C:\\tr1\\' + argsdict['o'])
+    reg_num = argsdict['reg_num']
     with open(datafile, "r", encoding='utf-8') as f1:
         csv_reader = csv.reader(f1, delimiter=';')
         for row in csv_reader:
@@ -49,7 +50,6 @@ if __name__ == '__main__':
     parser.add_argument('--reg_num', action='store_true')
     args = parser.parse_args()
     argsdict = vars(args)
-    reg_num = argsdict['reg_num']
     varlist = [argsdict['brand'], argsdict['year'], argsdict['color'], argsdict['fuel']]
     finlist = []
     if all(var is None for var in varlist):
