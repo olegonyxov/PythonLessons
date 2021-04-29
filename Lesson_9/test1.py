@@ -22,7 +22,7 @@ def make_name():
     templist = []
     for var in varlist:
         templist.append(var)
-    filename = filename + '-'.join(templist)
+    filename = filename + '-'.join(templist)+".csv"
     return filename
 
 
