@@ -1,25 +1,6 @@
 import argparse
 import csv
 
-parser = argparse.ArgumentParser(description="find_a_car")
-parser.add_argument('--o')
-parser.add_argument('--year', default=None, nargs='?')
-parser.add_argument('--brand', default=None, nargs='?')
-parser.add_argument('--color', default=None, nargs='?')
-parser.add_argument('--fuel', default=None, nargs='?')
-parser.add_argument('--reg_num',action='store_true')
-args = parser.parse_args()
-argsdict = vars(args)
-datafile = str('C:\\tr1\\'+argsdict['o'])
-brand = argsdict['brand']
-color = argsdict['color']
-year = argsdict['year']
-fuel = argsdict['fuel']
-reg_num = argsdict['reg_num']
-varlist = [brand, year, color, fuel]
-finlist = list()
-
-
 def make_list():
     with open(datafile, "r", encoding='utf-8') as f1:
         csv_reader = csv.reader(f1, delimiter=';')
@@ -41,7 +22,7 @@ def make_list():
 
 def make_name():
     filename = 'C:\\tr1\\'
-    templist = list()
+    templist = []
     for var in varlist:
         if var != None:
             templist.append(var)
@@ -64,6 +45,23 @@ def readfile():
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="find_a_car")
+    parser.add_argument('--o')
+    parser.add_argument('--year', default=None, nargs='?')
+    parser.add_argument('--brand', default=None, nargs='?')
+    parser.add_argument('--color', default=None, nargs='?')
+    parser.add_argument('--fuel', default=None, nargs='?')
+    parser.add_argument('--reg_num', action='store_true')
+    args = parser.parse_args()
+    argsdict = vars(args)
+    datafile = str('C:\\tr1\\' + argsdict['o'])
+    brand = argsdict['brand']
+    color = argsdict['color']
+    year = argsdict['year']
+    fuel = argsdict['fuel']
+    reg_num = argsdict['reg_num']
+    varlist = [brand, year, color, fuel]
+    finlist = []
     if brand == None and color == None and year == None and fuel == None:
         print("Please enter parameters")
     else:
