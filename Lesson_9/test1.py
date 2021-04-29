@@ -33,13 +33,6 @@ def make_file():
         csv_writer.writerows(finlist)
 
 
-def readfile():
-    with open(make_name(), "r", encoding='utf-8') as f3:
-        csv_reader2 = csv.DictReader(f3)
-        for i in csv_reader2:
-            print(i)
-
-
 def clean_vars():
     for var in varlist:
         if var is None:
@@ -66,4 +59,4 @@ if __name__ == '__main__':
         make_list()
         make_name()
         make_file()
-        readfile()
+
