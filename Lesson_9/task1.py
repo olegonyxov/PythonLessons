@@ -1,30 +1,30 @@
 import argparse
 import csv
 
+
 def make_list():
     with open(datafile, "r", encoding='utf-8') as f1:
         csv_reader = csv.reader(f1, delimiter=';')
         for row in csv_reader:
-            if brand in row or brand == None:
-                if color in row or color == None:
-                    if fuel in row or fuel == None:
-                        if year in row or year == None:
-                            templist = list()
-                            if reg_num == True and row[-1] !="":
+            if brand in row or brand is None:
+                if color in row or color is None:
+                    if fuel in row or fuel is None:
+                        if year in row or year is None:
+                            templist = []
+                            if reg_num is True and row[-1] != "":
                                 templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
                                 finlist.append(*templist)
 
-                            elif reg_num ==False:
+                            elif reg_num is False:
                                 templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
                                 finlist.append(*templist)
-
 
 
 def make_name():
     filename = 'C:\\tr1\\'
     templist = []
     for var in varlist:
-        if var != None:
+        if var is not None:
             templist.append(var)
     filename = filename + '-'.join(templist)
     return filename
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     reg_num = argsdict['reg_num']
     varlist = [brand, year, color, fuel]
     finlist = []
-    if brand == None and color == None and year == None and fuel == None:
+    if brand is None and color is None and year is None and fuel is None:
         print("Please enter parameters")
     else:
         make_list()
