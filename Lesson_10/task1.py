@@ -1,9 +1,9 @@
 import csv
 
-wordlist = ['asdfasdf', 'sdfasdf', 'fghfdgh', 'sdfgdsg', 'dfgsdg', 'asdfdsa', 'fdsasdf', ""]
+wordlist = ['asdfasdf', 'sdfasdf', 'fghfdgh', 'sdfgdsg', 'dfgsdg', 'asdfdsa', 'fdsasdf']
 # inputstr = input('input your words:')
 # inputindent = input('input indent number:')
-inputindent = int("-3")
+inputindent = int("3")
 fieldnames = ('indent', 'string', 'palindrome')
 
 
@@ -12,6 +12,7 @@ def makelist():
         inputstr = input('input your words:')
         wordlist.append(inputstr)
         if inputstr == "":
+            del wordlist[-1]
             break
     return wordlist
 
