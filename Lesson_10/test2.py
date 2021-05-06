@@ -37,6 +37,5 @@ def make_indent():
             else:
                 indent = str((inputindent + len(row['indent'])) * " ")
     return indent
-
-
-write_words()
+if __name__ == '__main__':
+    write_words()
