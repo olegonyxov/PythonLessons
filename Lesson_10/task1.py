@@ -3,7 +3,7 @@ import csv
 inputstr = str(input('input some strong:'))
 inputnum = int(input("input space arg:"))
 x = 1
-while inputstr != 0:
+while inputstr != "0":
     with open('C:\\tr1\\polid.csv', 'w', encoding='utf-8') as file1:
         reader = csv.DictReader(file1, fieldnames=['indent', 'string', 'palindrome'])
         writer = csv.DictWriter(file1, fieldnames=['indent', 'string', 'palindrome'])
