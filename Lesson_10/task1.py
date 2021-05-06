@@ -21,4 +21,9 @@ inputnum = '3'
 if int(inputnum) > 0:
     inputnum = str(" " * int(inputnum))
     writer.writerow({'indent': inputnum})
+elif int(inputnum) < 0:
+
+
+
+
 
