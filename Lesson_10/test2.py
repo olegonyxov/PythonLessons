@@ -4,7 +4,7 @@ wordlist = ['asdfasdf', 'sdfasdf', 'fghfdgh', 'sdfgdsg', 'dfgsdg', 'asdfdsa', 'f
 # inputstr = input('input your words:')
 # inputindent = input('input indent number:')
 inputindent = int("3")
-fieldnames = ('indent', 'string', 'polindrome')
+fieldnames = ('indent', 'string', 'palindrome')
 
 
 def makelist():
@@ -22,9 +22,9 @@ def write_words():
         writer = csv.DictWriter(file1, fieldnames=fieldnames,delimiter=' ')
         for word in wordlist:
             if word == word[::-1]:
-                writer.writerow({'indent': make_indent(), "string": word, 'polindrome': 'Yes'})
+                writer.writerow({'indent': make_indent(), "string": word, 'palindrome': 'Yes'})
             else:
-                writer.writerow({'indent': make_indent(), "string": word, 'polindrome': 'NO'})
+                writer.writerow({'indent': make_indent(), "string": word, 'palindrome': 'NO'})
 
 
 def make_indent():

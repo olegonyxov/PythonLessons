@@ -1,12 +1,10 @@
 import csv
 
-wordlist = ['asdfasdf', 'sdfasdf', 'fghfdgh', 'sdfgdsg', 'dfgsdg', 'asdfdsa', 'fdsasdf']
-# inputstr = input('input your words:')
-# inputindent = input('input indent number:')
-inputindent = int("3")
-fieldnames = ('indent', 'string', 'polindrome')
-
-
+# wordlist = ['asdfasdf', 'sdfasdf', 'fghfdgh', 'sdfgdsg', 'dfgsdg', 'asdfdsa', 'fdsasdf']
+# inputindent = int("3")
+fieldnames = ('indent', 'string', 'palindrome')
+wordlist = []
+inputindent = int(input('input indent number:'))
 def makelist():
     while True:
         inputstr = input('input your words:')
@@ -22,9 +20,9 @@ def write_words():
         writer = csv.DictWriter(file1, fieldnames=fieldnames, delimiter=' ')
         for word in wordlist:
             if word == word[::-1]:
-                writer.writerow({'indent': make_indent(), "string": word, 'polindrome': 'Yes'})
+                writer.writerow({'indent': make_indent(), "string": word, 'palindrome': 'Yes'})
             else:
-                writer.writerow({'indent': make_indent(), "string": word, 'polindrome': 'NO'})
+                writer.writerow({'indent': make_indent(), "string": word, 'palindrome': 'NO'})
 
 
 def make_indent():
@@ -40,5 +38,5 @@ def make_indent():
                 indent = str((inputindent + len(row['indent'])) * " ")
     return indent
 
-
+makelist()
 write_words()
