@@ -5,7 +5,7 @@ wordlist = ['asdfasdf', 'sdfasdf', 'fghfdgh', 'sdfgdsg', 'dfgsdg', 'asdfdsa', 'f
 # inputindent = input('input indent number:')
 inputindent = int("3")
 fieldnames = ('indent', 'string', 'polindrome')
-indent = ""
+
 
 def makelist():
     while True:
