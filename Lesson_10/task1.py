@@ -4,10 +4,10 @@ import csv
 # inputstr = str(input('input some strong:'))
 # inputnum = int(input("input space arg:"))
 
-inputstr = str()
+inputstr = None
 while inputstr != "":
     inputstr = str(input('input some strong:'))
-    with open('C:\\tr1\\polid.csv', 'w', encoding='utf-8') as file1:
+    with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
         reader = csv.DictReader(file1, fieldnames=['indent', 'string', 'palindrome'])
         writer = csv.DictWriter(file1, fieldnames=['indent', 'string', 'palindrome'])
 
