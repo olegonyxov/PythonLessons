@@ -5,7 +5,6 @@ import csv
 # inputnum = int(input("input space arg:"))
 
 inputstr = str
-
 while inputstr != "":
 
     inputstr = str(input('input some strong:'))
@@ -17,6 +16,9 @@ while inputstr != "":
             writer.writerow({'string': inputstr, 'palindrome': 'YES'})
         else:
             writer.writerow({'string': inputstr, 'palindrome': 'NO'})
+# inputnum = int(input("input space arg:"))
 inputnum = '3'
 if int(inputnum) > 0:
     inputnum = str(" " * int(inputnum))
+    writer.writerow({'indent': inputnum})
+
