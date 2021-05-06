@@ -1,23 +1,17 @@
 import csv
 
-inputstr = ['ШАЛАШ', 'КАЗАК', 'ДЕД', 'ДОХОД', '13231', 'hgfhjgfjhgfjhjhgfj', 'dfjh']
-
-with open('C:\\tr1\\polid.csv', 'w+', encoding='utf-8') as file1:
-    reader = csv.reader(file1)
-    writer = csv.writer(file1)
-    writer.writerow(['indent', 'string','asa'])
-    for row[2] in reader.line_num
-
-    # while True:
-    #     inputstring = str(input("Input some string:"))
-    #     if inputstring == "":
-    #         break
-    #     for i in reader['string']:
-    #         writer.writerow(inputstr)
-
-# inputstr = ['ШАЛАШ', 'КАЗАК', 'ДЕД', 'ДОХОД', '13231','hgfhjgfjhgfjhjhgfj','dfjh']
-# inputint = 3
-#
-# for i in inputstr:
-#     if i == i[::-1]:
-#         print(i)
+inputstr = str(input('input some strong:'))
+inputnum = int(input("input space arg:"))
+x = 1
+while inputstr != 0:
+    with open('C:\\tr1\\polid.csv', 'w', encoding='utf-8') as file1:
+        reader = csv.DictReader(file1, fieldnames=['indent', 'string', 'palindrome'])
+        writer = csv.DictWriter(file1, fieldnames=['indent', 'string', 'palindrome'])
+        if inputnum > 0:
+            inputnum = " " * inputnum
+        else:  # TODO
+            inputnum = ""
+        if inputstr == inputstr[::-1]:
+            writer.writerow({'indent': inputnum, 'string': inputstr, 'palindrome': 'YES'})
+        else:
+            writer.writerow({'indent': inputnum, 'string': inputstr, 'palindrome': 'NO'})
