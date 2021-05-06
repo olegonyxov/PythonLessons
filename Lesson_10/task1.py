@@ -4,9 +4,8 @@ import csv
 # inputstr = str(input('input some strong:'))
 # inputnum = int(input("input space arg:"))
 
-inputstr = str
+inputstr = str()
 while inputstr != "":
-
     inputstr = str(input('input some strong:'))
     with open('C:\\tr1\\polid.csv', 'w', encoding='utf-8') as file1:
         reader = csv.DictReader(file1, fieldnames=['indent', 'string', 'palindrome'])
@@ -17,11 +16,11 @@ while inputstr != "":
         else:
             writer.writerow({'string': inputstr, 'palindrome': 'NO'})
 # inputnum = int(input("input space arg:"))
-inputnum = '3'
-if int(inputnum) > 0:
-    inputnum = str(" " * int(inputnum))
-    writer.writerow({'indent': inputnum})
-elif int(inputnum) < 0:
+# inputnum = '3'
+# if int(inputnum) > 0:
+#     inputnum = str(" " * int(inputnum))
+#     writer.writerow({'indent': inputnum})
+
 
 
 
