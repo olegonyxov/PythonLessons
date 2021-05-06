@@ -2,7 +2,7 @@ import csv
 #
 # inputstr = str(input('input some strong:'))
 # # inputnum = int(input("input space arg:"))
-# inputstr = 'dfasf'
+
 inputstr =str
 inputnum = '3'
 if int(inputnum) > 0:
@@ -17,3 +17,6 @@ while inputstr != "":
             writer.writerow({'indent': inputnum, 'string': inputstr, 'palindrome': 'YES'})
         else:
             writer.writerow({'indent': inputnum, 'string': inputstr, 'palindrome': 'NO'})
+inputnum = '3'
+if int(inputnum) > 0:
+    inputnum = str(" " * int(inputnum))
