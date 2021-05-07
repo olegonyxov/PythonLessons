@@ -41,6 +41,5 @@ def make_indent():
 
 
 makelist()
-make_indent()
 write_words()
-print(make_indent())
+
