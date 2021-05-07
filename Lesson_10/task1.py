@@ -5,6 +5,8 @@ import csv
 fieldnames = ('indent', 'string', 'palindrome')
 wordlist = []
 inputindent = int(input('input indent number:'))
+
+
 def makelist():
     while True:
         inputstr = input('input your words:')
@@ -26,7 +28,7 @@ def write_words():
 
 
 def make_indent():
-    indent = ""
+    indent = str()
     with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
         reader = csv.DictReader(file1, fieldnames=fieldnames, delimiter=' ')
         for row in reader:
@@ -35,6 +37,7 @@ def make_indent():
             else:
                 indent = str((inputindent + len(row['indent'])) * "1 ")
     return indent
+
 
 makelist()
 write_words()
