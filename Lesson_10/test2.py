@@ -1,10 +1,10 @@
 import csv
 
-wordlist = ['asdfasdf', 'sdfasdf', 'fghfdgh', 'sdfgdsg', 'dfgsdg', 'asdfdsa', 'fdsasdf']
-# inputstr = input('input your words:')
-# inputindent = input('input indent number:')
-inputindent = int("3")
+# wordlist = ['asdfasdf', 'sdfasdf', 'fghfdgh', 'sdfgdsg', 'dfgsdg', 'asdfdsa', 'fdsasdf']
+# inputindent = int("3")
 fieldnames = ('indent', 'string', 'palindrome')
+wordlist = []
+inputindent = int(input('input indent number:'))
 
 
 def makelist():
@@ -18,8 +18,9 @@ def makelist():
 
 
 def write_words():
-    with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
-        writer = csv.DictWriter(file1, fieldnames=fieldnames,delimiter=' ')
+    with open('C:\\tr1\\polid.csv', 'w', encoding='utf-8') as file1:
+        writer = csv.DictWriter(file1, fieldnames=fieldnames, delimiter=' ')
+        make_indent()
         for word in wordlist:
             if word == word[::-1]:
                 writer.writerow({'indent': make_indent(), "string": word, 'palindrome': 'Yes'})
@@ -30,15 +31,19 @@ def write_words():
 def make_indent():
     indent = ""
     with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
-        reader = csv.DictReader(file1, fieldnames=fieldnames,delimiter=' ')
+        reader = csv.DictReader(file1, fieldnames=fieldnames, delimiter=' ')
+        print(reader)
         for row in reader:
             print(row)
             if inputindent < 0 and abs(inputindent) >= len(row["indent"]):
-                del row['indent']
-                indent = ""
+                indent=""
             else:
-                indent = str((inputindent + len(row['indent'])) * " ")
+                indent = (len(row['indent'])+int(inputindent)) * " "
+        print(indent)
     return indent
 
 
+makelist()
+make_indent()
 write_words()
+print(make_indent())

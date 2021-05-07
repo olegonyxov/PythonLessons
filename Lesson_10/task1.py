@@ -18,8 +18,9 @@ def makelist():
 
 
 def write_words():
-    with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
+    with open('C:\\tr1\\polid.csv', 'w', encoding='utf-8') as file1:
         writer = csv.DictWriter(file1, fieldnames=fieldnames, delimiter=' ')
+        make_indent()
         for word in wordlist:
             if word == word[::-1]:
                 writer.writerow({'indent': make_indent(), "string": word, 'palindrome': 'Yes'})
@@ -28,16 +29,21 @@ def write_words():
 
 
 def make_indent():
-    indent = str()
+    indent = ""
     with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
         reader = csv.DictReader(file1, fieldnames=fieldnames, delimiter=' ')
+        print(reader)
         for row in reader:
+            print(row)
             if inputindent < 0 and abs(inputindent) >= len(row["indent"]):
-                del row['indent']
+                indent=""
             else:
-                indent = str((inputindent + len(row['indent'])) * "")
+                indent = (len(row['indent'])+int(inputindent)) * " "
+        print(indent)
     return indent
 
 
 makelist()
+make_indent()
 write_words()
+print(make_indent())
