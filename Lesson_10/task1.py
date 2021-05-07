@@ -18,7 +18,7 @@ def makelist():
 
 
 def write_words():
-    with open('C:\\tr1\\polid.csv', 'w', encoding='utf-8') as file1:
+    with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
         writer = csv.DictWriter(file1, fieldnames=fieldnames, delimiter=' ')
         make_indent()
         for word in wordlist:
@@ -36,7 +36,7 @@ def make_indent():
         for row in reader:
             print(row)
             if inputindent < 0 and abs(inputindent) >= len(row["indent"]):
-                indent=""
+                pass
             else:
                 indent = (len(row['indent'])+int(inputindent)) * " "
         print(indent)
