@@ -32,14 +32,11 @@ def make_indent():
     indent = ""
     with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
         reader = csv.DictReader(file1, fieldnames=fieldnames, delimiter=' ')
-        print(reader)
         for row in reader:
-            print(row)
             if inputindent < 0 and abs(inputindent) >= len(row["indent"]):
                 pass
             else:
                 indent = (len(row['indent'])+int(inputindent)) * " "
-        print(indent)
     return indent
 
 
