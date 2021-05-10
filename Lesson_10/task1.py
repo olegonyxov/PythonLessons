@@ -32,6 +32,7 @@ def make_indent():
                 indent = ''
             else:
                 indent = (len(row['indent']) + int(inputindent)) * ' '
+            break
     return indent
 
 

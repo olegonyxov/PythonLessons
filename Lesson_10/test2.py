@@ -1,11 +1,5 @@
 import csv
 
-# wordlist = ['asdfasdf', 'sdfasdf', 'fghfdgh', 'sdfgdsg', 'dfgsdg', 'asdfdsa', 'fdsasdf']
-# inputindent = int("3")
-fieldnames = ('indent', 'string', 'palindrome')
-wordlist = []
-inputindent = int(input('input indent number:'))
-indlist= []
 
 def makelist():
     while True:
@@ -18,29 +12,35 @@ def makelist():
 
 
 def write_words():
-    with open('C:\\tr1\\polid.csv', 'w', encoding='utf-8') as file1:
+    with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
         writer = csv.DictWriter(file1, fieldnames=fieldnames, delimiter='|')
+        reader = csv.DictReader(file1, fieldnames=fieldnames, delimiter='|')
+        indent = make_indent()
+        print(indent)
         for word in wordlist:
             if word == word[::-1]:
-                writer.writerow({'indent': make_indent(), "string": word, 'palindrome': 'Yes'})
+                writer.writerow({"string": word, 'palindrome': 'Yes'})
             else:
-                writer.writerow({'indent': make_indent(), "string": word, 'palindrome': 'NO'})
+                writer.writerow({"string": word, 'palindrome': 'NO'})
+
 
 
 def make_indent():
+    indent = str(inputindent * " ")
     with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
         reader = csv.DictReader(file1, fieldnames=fieldnames, delimiter='|')
-        tempindent = "1"
         for row in reader:
-            # if inputindent < 0 and abs(inputindent) >= len(row["indent"]):
-            #     pass
-            # else:
-            tempindent = (len(row['indent']) + int(inputindent)) * tempindent
-        indlist.append(tempindent)
-        return tempindent
+            if inputindent < 0 and abs(inputindent) >= len(row["indent"]):
+                indent = ''
+            else:
+                indent = (len(row['indent']) + int(inputindent)) * ' '
+            break
+    return indent
 
 
-makelist()
-write_words()
-# print(make_indent())
-print(indlist)
+if __name__ == "__main__":
+    inputindent = int(input('input indent number:'))
+    fieldnames = ('indent', 'string', 'palindrome')
+    wordlist = []
+    makelist()
+    write_words()
