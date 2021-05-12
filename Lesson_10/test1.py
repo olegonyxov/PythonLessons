@@ -30,11 +30,10 @@ def write_words():
 def move_list():
     inputmoveint = input('input indent number:')
     intm = int(inputmoveint)
-    if inputmoveint != 0:
-        templist = wordlist[0:intm]
-        wordlist.extend(templist)
-        del wordlist[0:len(templist)]
-        print(wordlist)
+    templist = wordlist[0:intm]
+    wordlist.extend(templist)
+    del wordlist[0:len(templist)]
+    print(wordlist)
     return wordlist
 
 
