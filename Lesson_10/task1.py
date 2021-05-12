@@ -7,38 +7,39 @@ def makelist():
         wordlist.append(inputstr)
         if inputstr == "":
             del wordlist[-1]
+            print(wordlist)
+            print(type(wordlist))
             break
+    try:
+        move_list()
+    except ValueError:
+        pass
     return wordlist
 
 
 def write_words():
-    with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
+    with open('C:\\tr1\\polid.csv', 'w+', encoding='utf-8') as file1:
         writer = csv.DictWriter(file1, fieldnames=fieldnames, delimiter='|')
-        indent = make_indent()
-        print(indent)
         for word in wordlist:
             if word == word[::-1]:
-                writer.writerow({'indent': indent, "string": word, 'palindrome': 'Yes'})
+                writer.writerow({"string": word, 'palindrome': 'Yes'})
             else:
-                writer.writerow({'indent': indent, "string": word, 'palindrome': 'NO'})
+                writer.writerow({"string": word, 'palindrome': 'NO'})
 
 
-def make_indent():
-    indent = str(inputindent*" ")
-    with open('C:\\tr1\\polid.csv', 'r+', encoding='utf-8') as file1:
-        reader = csv.DictReader(file1, fieldnames=fieldnames, delimiter='|')
-        for row in reader:
-            if inputindent < 0 and abs(inputindent) >= len(row["indent"]):
-                indent = ''
-            else:
-                indent = (len(row['indent']) + int(inputindent)) * ' '
-            break
-    return indent
+def move_list():
+    inputmoveint = input('input indent number:')
+    intm = int(inputmoveint)
+    if inputmoveint != 0:
+        templist = wordlist[0:intm]
+        wordlist.extend(templist)
+        del wordlist[0:len(templist)]
+        print(wordlist)
+    return wordlist
 
 
 if __name__ == "__main__":
-    inputindent = int(input('input indent number:'))
-    fieldnames = ('indent', 'string', 'palindrome')
+    fieldnames = ('string', 'palindrome')
     wordlist = []
     makelist()
     write_words()
