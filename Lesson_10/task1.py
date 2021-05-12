@@ -8,10 +8,7 @@ def makelist():
         if inputstr == "":
             del wordlist[-1]
             break
-    try:
-        move_list()
-    except ValueError:
-        pass
+    move_list()
     return wordlist
 
 
@@ -27,12 +24,13 @@ def write_file():
 
 def move_list():
     inputmoveint = input('input indent number:')
-    intm = int(inputmoveint)
-    if inputmoveint != 0:
+    if inputmoveint == "":
+        pass
+    elif inputmoveint != 0:
+        intm = int(inputmoveint)
         templist = wordlist[0:intm]
         wordlist.extend(templist)
         del wordlist[0:len(templist)]
-        print(wordlist)
     return wordlist
 
 
