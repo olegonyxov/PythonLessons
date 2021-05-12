@@ -15,7 +15,7 @@ def makelist():
 def write_file():
     with open('C:\\tr1\\polid.csv', 'w+', encoding='utf-8') as file1:
         writer = csv.DictWriter(file1, fieldnames=fieldnames, delimiter='|')
-        for word in wordlist:
+        for word in makelist():
             if word == word[::-1]:
                 writer.writerow({"string": word, 'palindrome': 'Yes'})
             else:
@@ -37,5 +37,4 @@ def move_list():
 if __name__ == "__main__":
     fieldnames = ('string', 'palindrome')
     wordlist = []
-    makelist()
     write_file()
