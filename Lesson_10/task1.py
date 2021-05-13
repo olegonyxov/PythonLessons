@@ -22,6 +22,7 @@ def write_file():
                 writer.writerow({"string": word, 'palindrome': 'simple word'})
 
 
+#  KISS
 def move_list():
     inputedmovevar = input('input move number:')
     if inputedmovevar == "":
