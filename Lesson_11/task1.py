@@ -14,3 +14,5 @@ if __name__ == '__main__':
     argsvars = vars(parser.parse_args())
     print(argsvars)
     print('count points:', count())
+
+# TODO  найти инфу о феномене 'winwindraw'
