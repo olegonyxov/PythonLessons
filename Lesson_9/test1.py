@@ -13,15 +13,15 @@ def make_file():
             for row in csv_reader:
                 if all(var in row.values() for var in varlist):
                     if reg_num is True and row['N_REG_NEW'] != "":
-                        finlist.update(
+                        findict.update(
                             {'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
                              'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL'], 'N_REG_NEW': row['N_REG_NEW']})
-                        csv_writer.writerows([finlist])
+                        csv_writer.writerows([findict])
                     elif reg_num is False:
-                        finlist.update({
+                        findict.update({
                             'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
                             'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL']})
-                        csv_writer.writerows([finlist])
+                        csv_writer.writerows([findict])
 
 
 def make_name():
@@ -32,15 +32,15 @@ def make_name():
     filename = filename + '-'.join(templist) + ".csv"
     return filename
 
+
 def clean_vars():
+    i = 0
     for var in varlist:
         if var is None:
             varlist.remove(var)
-    i = 0
     for varlist[i] in varlist:
         varlist[i] = varlist[i].upper()
         i += 1
-    print(varlist)
     return varlist
 
 
@@ -56,13 +56,9 @@ if __name__ == '__main__':
     argsdict = vars(args)
     fieldnames = ('D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKE_YEAR', 'FUEL', 'N_REG_NEW')
     varlist = [argsdict['brand'], argsdict['year'], argsdict['color'], argsdict['fuel']]
-    finlist = {}
+    findict = {}
     if all(var is None for var in varlist):
         print("Please enter parameters")
     else:
         clean_vars()
-        print(1)
-        print(finlist)
         make_file()
-        print(2)
-        print(finlist)

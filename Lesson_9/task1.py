@@ -41,7 +41,6 @@ def clean_vars():
     for varlist[i] in varlist:
         varlist[i] = varlist[i].upper()
         i += 1
-
     return varlist
 
 
@@ -62,5 +61,4 @@ if __name__ == '__main__':
         print("Please enter parameters")
     else:
         clean_vars()
-
         make_file()
