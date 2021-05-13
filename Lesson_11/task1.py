@@ -2,7 +2,7 @@ import argparse
 
 
 def count():
-    x = int(argsvars['win']) * 3 + int(argsvars['lose'])
+    x = int(argsvars['win']) * 3 + int(argsvars['draw'])
     return x
 
 
