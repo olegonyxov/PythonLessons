@@ -7,7 +7,7 @@ def count():
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="currency_checker")
+    parser = argparse.ArgumentParser(description="count_checker")
     parser.add_argument('win')
     parser.add_argument('draw')
     parser.add_argument('lose')
