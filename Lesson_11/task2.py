@@ -8,7 +8,7 @@ def change_char():
     endlist = []
     for word in slices:
         a = 0
-        while a < (len(word) / 4):
+        while a < 3:
             i = random.randint(0, (len(word) - 1))
             word = word.replace(word[i], '*')
             a += 1
