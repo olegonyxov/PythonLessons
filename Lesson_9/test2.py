@@ -30,7 +30,7 @@ def make_name():
 def make_file():
     with open(make_name(), "w", encoding='utf-8') as f2:
         csv_writer = csv.writer(f2)
-        csv_writer.writerow(['D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKEYEAR', 'FUEL', 'NEW_REG_NEW'])
+        csv_writer.writerow(['D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKE_YEAR', 'FUEL', 'NEW_REG_NEW'])
         csv_writer.writerows(finlist)
 
 
