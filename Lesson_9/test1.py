@@ -41,6 +41,7 @@ def clean_vars():
     for varlist[i] in varlist:
         varlist[i] = varlist[i].upper()
         i += 1
+    print(varlist)
     return varlist
 
 

@@ -11,13 +11,13 @@ def make_file():
             csv_writer = csv.DictWriter(f2, fieldnames=fieldnames, delimiter='|')
             csv_writer.writeheader()
             for row in csv_reader:
-                if all(var in row.values() for var in varlist):
-                    if reg_num is True and row['N_REG_NEW'] != "":
+                if all(var in row.values() for var in clean_vars()):
+                    if row['N_REG_NEW'] != "" and reg_num:
                         findict.update(
                             {'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
                              'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL'], 'N_REG_NEW': row['N_REG_NEW']})
                         csv_writer.writerows([findict])
-                    elif reg_num is False:
+                    elif not reg_num:
                         findict.update({
                             'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
                             'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL']})
@@ -27,19 +27,19 @@ def make_file():
 def make_name():
     filename = 'C:\\tr1\\'
     templist = []
-    for var in varlist:
+    for var in clean_vars():
         templist.append(var.lower())
     filename = filename + '-'.join(templist) + ".csv"
     return filename
 
 
-def clean_vars():
-    for i in range(len(varlist)-1):
-        if varlist[i] is None:
-            varlist.remove(varlist[i])
-        else:
+def clean_vars():  # работает при -237 с одним аргументом
+    newvarlist = []
+    for i in range(len(varlist)):
+        if varlist[i]:
             varlist[i] = varlist[i].upper()
-    return varlist
+            newvarlist.append(varlist[i])
+    return newvarlist
 
 
 if __name__ == '__main__':
@@ -58,5 +58,4 @@ if __name__ == '__main__':
     if all(var is None for var in varlist):
         print("Please enter parameters")
     else:
-        clean_vars()
         make_file()
