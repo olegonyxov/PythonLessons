@@ -50,8 +50,7 @@ if __name__ == '__main__':
     parser.add_argument('--color', default=None, nargs='?')
     parser.add_argument('--fuel', default=None, nargs='?')
     parser.add_argument('--reg_num', action='store_true')
-    args = parser.parse_args()
-    argsdict = vars(args)
+    argsdict = vars(parser.parse_args())
     fieldnames = ('D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKE_YEAR', 'FUEL', 'N_REG_NEW')
     varlist = [argsdict['brand'], argsdict['year'], argsdict['color'], argsdict['fuel']]
     findict = {}
