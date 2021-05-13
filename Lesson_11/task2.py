@@ -7,11 +7,10 @@ def change_char():
     slices = string.split('@')
     endlist = []
     for word in slices:
-        a = 0
-        while a < 3:
+        b = int(len(word) / 3)
+        for a in range(b):
             i = random.randint(0, (len(word) - 1))
             word = word.replace(word[i], '*')
-            a += 1
         endlist.append(word)
     endadress = "@".join(endlist)
     return endadress

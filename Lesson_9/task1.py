@@ -34,13 +34,11 @@ def make_name():
 
 
 def clean_vars():
-    i = 0
     for var in varlist:
         if var is None:
             varlist.remove(var)
-    for varlist[i] in varlist:
+    for i in range(len(varlist)):
         varlist[i] = varlist[i].upper()
-        i += 1
     return varlist
 
 
