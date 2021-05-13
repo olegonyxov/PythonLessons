@@ -11,6 +11,4 @@ argsvars = vars(parser.parse_args())
 def renew_string():
     endstring = argsvars['string'].replace(argsvars['old'], argsvars['new'], argsvars['count'])
     return endstring
-print(renew_string())
-
-
+# print(renew_string())
