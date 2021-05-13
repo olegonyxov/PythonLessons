@@ -6,8 +6,8 @@ def make_file():
     datafile = str('C:\\tr1\\' + argsdict['o'])
     reg_num = argsdict['reg_num']
     with open(datafile, "r", encoding='utf-8') as f1:
-        csv_reader = csv.DictReader(f1, delimiter=';')
         with open(make_name(), "w", encoding='utf-8') as f2:
+            csv_reader = csv.DictReader(f1, delimiter=';')
             csv_writer = csv.DictWriter(f2, fieldnames=fieldnames, delimiter='|')
             csv_writer.writeheader()
             for row in csv_reader:
