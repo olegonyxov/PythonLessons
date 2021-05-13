@@ -33,7 +33,7 @@ def make_name():
     return filename
 
 
-def clean_vars():  # работает при -237 с одним аргументом
+def clean_vars():  # работает при -273 с одним аргументом
     newvarlist = []
     for i in range(len(varlist)):
         if varlist[i]:
