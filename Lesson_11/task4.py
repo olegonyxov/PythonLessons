@@ -1,6 +1,6 @@
 import argparse
 
-parser = argparse.ArgumentParser(description="currency_checker")
+parser = argparse.ArgumentParser(description="string_maker")
 parser.add_argument('old')
 parser.add_argument('new')
 parser.add_argument('count')
