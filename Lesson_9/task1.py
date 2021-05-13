@@ -5,6 +5,7 @@ import csv
 def make_file():
     datafile = str('C:\\tr1\\' + argsdict['o'])
     reg_num = argsdict['reg_num']
+    findict = {}
     with open(datafile, "r", encoding='utf-8') as f1:
         with open(make_name(), "w", encoding='utf-8') as f2:
             csv_reader = csv.DictReader(f1, delimiter=';')
@@ -53,7 +54,6 @@ if __name__ == '__main__':
     argsdict = vars(parser.parse_args())
     fieldnames = ('D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKE_YEAR', 'FUEL', 'N_REG_NEW')
     varlist = [argsdict['brand'], argsdict['year'], argsdict['color'], argsdict['fuel']]
-    findict = {}
     if all(not var for var in varlist):
         print("Please enter parameters")
     else:
