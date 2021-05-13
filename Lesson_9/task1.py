@@ -54,7 +54,7 @@ if __name__ == '__main__':
     fieldnames = ('D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKE_YEAR', 'FUEL', 'N_REG_NEW')
     varlist = [argsdict['brand'], argsdict['year'], argsdict['color'], argsdict['fuel']]
     findict = {}
-    if all(var is None for var in varlist):
+    if all(not var for var in varlist):
         print("Please enter parameters")
     else:
         make_file()
