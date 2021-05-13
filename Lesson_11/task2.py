@@ -1,18 +1,19 @@
 import random
 string = 'somebody_email@gmail.com'
-slices = string.split('@')
-word1=slices[0]
-word2=slices[1]
 
 def change_char():
-    i = random.randint(0, len(word1))
-    a=0
-    while a <3:
-        word1.replace(word1[i],"*")
-        a+=1
-
-change_char()
-print(word1)
+    slices = string.split('@')
+    endlist = []
+    for word in slices:
+        a=0
+        while a < (len(word)/4):
+            i = random.randint(0, (len(word) - 1))
+            word = word.replace(word[i],'*')
+            a+=1
+        endlist.append(word)
+    endadress= "@".join(endlist)
+    return endadress
+print(change_char())
 
 
 
