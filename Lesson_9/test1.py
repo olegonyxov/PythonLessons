@@ -1,0 +1,67 @@
+import argparse
+import csv
+
+
+def make_file():
+    datafile = str('C:\\tr1\\' + argsdict['o'])
+    reg_num = argsdict['reg_num']
+    with open(datafile, "r", encoding='utf-8') as f1:
+        csv_reader = csv.DictReader(f1, delimiter=';')
+        with open(make_name(), "w", encoding='utf-8') as f2:
+            csv_writer = csv.DictWriter(f2, fieldnames=fieldnames, delimiter='|')
+            csv_writer.writeheader()
+            for row in csv_reader:
+                if all(var in row.values() for var in varlist):
+                    if reg_num is True and row['N_REG_NEW'] != "":
+                        finlist.update(
+                            {'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
+                             'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL'], 'N_REG_NEW': row['N_REG_NEW']})
+                        csv_writer.writerows([finlist])
+                    elif reg_num is False:
+                        finlist.update({
+                            'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
+                            'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL']})
+                        csv_writer.writerows([finlist])
+
+
+def make_name():
+    filename = 'C:\\tr1\\'
+    templist = []
+    for var in varlist:
+        templist.append(var.lower())
+    filename = filename + '-'.join(templist) + ".csv"
+    return filename
+
+def clean_vars():
+    for var in varlist:
+        if var is None:
+            varlist.remove(var)
+    i = 0
+    for varlist[i] in varlist:
+        varlist[i] = varlist[i].upper()
+        i += 1
+    return varlist
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="find_a_car")
+    parser.add_argument('--o')
+    parser.add_argument('--year', default=None, nargs='?')
+    parser.add_argument('--brand', default=None, nargs='?')
+    parser.add_argument('--color', default=None, nargs='?')
+    parser.add_argument('--fuel', default=None, nargs='?')
+    parser.add_argument('--reg_num', action='store_true')
+    args = parser.parse_args()
+    argsdict = vars(args)
+    fieldnames = ('D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKE_YEAR', 'FUEL', 'N_REG_NEW')
+    varlist = [argsdict['brand'], argsdict['year'], argsdict['color'], argsdict['fuel']]
+    finlist = {}
+    if all(var is None for var in varlist):
+        print("Please enter parameters")
+    else:
+        clean_vars()
+        print(1)
+        print(finlist)
+        make_file()
+        print(2)
+        print(finlist)

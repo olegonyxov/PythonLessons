@@ -2,42 +2,46 @@ import argparse
 import csv
 
 
-def make_list():
+def make_file():
     datafile = str('C:\\tr1\\' + argsdict['o'])
     reg_num = argsdict['reg_num']
     with open(datafile, "r", encoding='utf-8') as f1:
-        csv_reader = csv.reader(f1, delimiter=';')
-        for row in csv_reader:
-            if all(var in row for var in varlist):
-                templist = []
-                if reg_num is True and row[-1] != "":
-                    templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
-                    finlist.append(*templist)
-                elif reg_num is False:
-                    templist.append([row[4], row[7], row[8], row[10], row[9], row[14], row[18]])
-                    finlist.append(*templist)
+        csv_reader = csv.DictReader(f1, delimiter=';')
+        with open(make_name(), "w", encoding='utf-8') as f2:
+            csv_writer = csv.DictWriter(f2, fieldnames=fieldnames, delimiter='|')
+            csv_writer.writeheader()
+            for row in csv_reader:
+                if all(var in row.values() for var in varlist):
+                    if reg_num is True and row['N_REG_NEW'] != "":
+                        finlist.update(
+                            {'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
+                             'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL'], 'N_REG_NEW': row['N_REG_NEW']})
+                        csv_writer.writerows([finlist])
+                    elif reg_num is False:
+                        finlist.update({
+                            'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
+                            'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL']})
+                        csv_writer.writerows([finlist])
 
 
 def make_name():
     filename = 'C:\\tr1\\'
     templist = []
     for var in varlist:
-        templist.append(var)
-    filename = filename + '-'.join(templist)+".csv"
+        templist.append(var.lower())
+    filename = filename + '-'.join(templist) + ".csv"
     return filename
 
 
-def make_file():
-    with open(make_name(), "w", encoding='utf-8') as f2:
-        csv_writer = csv.writer(f2)
-        csv_writer.writerow(['D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKEYEAR', 'FUEL', 'NEW_REG_NEW'])
-        csv_writer.writerows(finlist)
-
-
 def clean_vars():
+    print(varlist)
+    i = -1
     for var in varlist:
         if var is None:
             varlist.remove(var)
+            varlist[i] = varlist[i].upper()
+            i += 1
+    return varlist
 
 
 if __name__ == '__main__':
@@ -50,12 +54,12 @@ if __name__ == '__main__':
     parser.add_argument('--reg_num', action='store_true')
     args = parser.parse_args()
     argsdict = vars(args)
+    fieldnames = ('D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKE_YEAR', 'FUEL', 'N_REG_NEW')
     varlist = [argsdict['brand'], argsdict['year'], argsdict['color'], argsdict['fuel']]
-    finlist = []
+    finlist = {}
     if all(var is None for var in varlist):
         print("Please enter parameters")
     else:
         clean_vars()
-        make_list()
-        make_name()
+
         make_file()
