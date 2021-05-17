@@ -23,10 +23,10 @@ class BankAcc:
         actions = (amount, "withdraw", datetime.now().strftime('%Y-%m-%d'))
         self.transactions.append(actions)
 
-    def show_balance(self):
+    def get_balance(self):
         return print(self.balance)
 
-    def show_transactions(self):
+    def get_transactions(self):
         return print(self.transactions)
 
 
@@ -34,6 +34,6 @@ class BankAcc:
 #     this_bank = BankAcc()
 #     this_bank.deposit(23)
 #     this_bank.withdraw(5)
-#     this_bank.show_balance()
-#     this_bank.show_transactions()
+#     this_bank.get_balance()
+#     this_bank.get_transactions()
 #     print(this_bank.UID)
