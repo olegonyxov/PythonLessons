@@ -12,7 +12,7 @@ def make_file():
             csv_writer = csv.DictWriter(f2, fieldnames=fieldnames, delimiter='|')
             csv_writer.writeheader()
             for row in csv_reader:
-                if all(var in row.values() for var in  # c четом логики применения  чем условия
+                if all(var in row.values() for var in  # c учетом логики применения, чем условия
                        clean_vars()):
                     findict.update(
                         {'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
