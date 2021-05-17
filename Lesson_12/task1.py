@@ -11,7 +11,7 @@ class Bank:
     pass
 
     def __repr__(self):
-        print("Банковский счет")
+        return "Банковский счет"
 
     def deposit(self, amount):
         self.balance += (amount + amount * self.fee)
