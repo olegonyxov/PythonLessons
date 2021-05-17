@@ -12,15 +12,17 @@ def make_file():
             csv_writer = csv.DictWriter(f2, fieldnames=fieldnames, delimiter='|')
             csv_writer.writeheader()
             for row in csv_reader:
-                if all(var in row.values() for var in  # c четом логики применения  чем условия
-                       clean_vars()):
-                    findict.update(
-                        {'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
-                         'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL']})
+                if all(var in row.values() for var in clean_vars()):
                     if row['N_REG_NEW'] != "" and reg_num:
                         findict.update(
-                            {'NEW_REG_NEW': row['N_REG_NEW']})
-                    csv_writer.writerows([findict])
+                            {'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
+                             'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL'], 'N_REG_NEW': row['N_REG_NEW']})
+                        csv_writer.writerows([findict])
+                    elif not reg_num:
+                        findict.update({
+                            'D_REG': row['D_REG'], 'BRAND': row['BRAND'], 'MODEL': row['MODEL'], 'COLOR': row['COLOR'],
+                            'MAKE_YEAR': row['MAKE_YEAR'], 'FUEL': row['FUEL']})
+                        csv_writer.writerows([findict])
 
 
 def make_name():
@@ -50,7 +52,7 @@ if __name__ == '__main__':
     parser.add_argument('--fuel', default=None, nargs='?')
     parser.add_argument('--reg_num', action='store_true')
     argsdict = vars(parser.parse_args())
-    fieldnames = ('D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKE_YEAR', 'FUEL', 'NEW_REG_NEW')
+    fieldnames = ('D_REG', 'BRAND', 'MODEL', 'COLOR', 'MAKE_YEAR', 'FUEL', 'N_REG_NEW')
     varlist = [argsdict['brand'], argsdict['year'], argsdict['color'], argsdict['fuel']]
     if all(not var for var in varlist):
         print("Please enter parameters")
