@@ -2,7 +2,7 @@ import uuid
 from datetime import datetime
 
 
-class Bank:
+class BankAcc:
     account_name = ""
     UID = uuid.uuid1()
     balance = 0.00
@@ -31,7 +31,7 @@ class Bank:
 
 
 # if __name__ == "__main__":
-#     this_bank = Bank()
+#     this_bank = BankAcc()
 #     this_bank.deposit(23)
 #     this_bank.withdraw(5)
 #     this_bank.show_balance()
