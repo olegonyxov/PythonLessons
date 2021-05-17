@@ -9,7 +9,6 @@ class BankAcc:
     fee = 0.01
     transactions = []
 
-
     def __repr__(self):
         return "Банковский счет"
 
@@ -23,19 +22,19 @@ class BankAcc:
         actions = (-amount, "withdraw", datetime.now().strftime('%Y-%m-%d'))
         self.transactions.append(actions)
 
-    def get_balance(self):
-        sum_trans = sum([i[0] for i in self.transactions])
-        out_balance = sum_trans - sum_trans * self.fee
-        return print(out_balance)
+    def get_balance(self):   # вот так нас и дурят
+        sum_trans_with_fee = sum([(i[0] - abs(i[0] * self.fee)) for i in self.transactions])
+        return print(sum_trans_with_fee)
 
     def get_transactions(self):
         return print(self.transactions)
 
-#
+
 # if __name__ == "__main__":
 #     this_bank = BankAcc()
 #     this_bank.deposit(23)
 #     this_bank.withdraw(5)
+#     print(this_bank.balance)
 #     this_bank.get_balance()
 #     this_bank.get_transactions()
 #     print(this_bank.UID)
