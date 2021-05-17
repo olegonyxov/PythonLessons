@@ -33,7 +33,7 @@ class City:
         return self.streets
 
 
-def nachepatat_poshitat():
+def print_count():
     peoplelist = []
     population = 0
     for i in range(1, House.people):  #
@@ -47,4 +47,4 @@ def nachepatat_poshitat():
     print("Количество населения :", population, "человек")
 
 
-nachepatat_poshitat()
+print_count()
