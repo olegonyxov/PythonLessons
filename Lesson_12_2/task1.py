@@ -36,12 +36,12 @@ class City:
 def nachepatat_poshitat():
     peoplelist = []
     population = 0
-    for i in range(1, House.people):
-        peoplelist.append(random.randrange(1, 99))
+    for i in range(1, House.people):  #
+        peoplelist.append(random.randrange(1, 99))  #
     print("Улица", 'Дом', 'Населенме', )
     for street in City.streetlist:
         for house in Street.houselist:
-            for people in peoplelist:
+            for people in peoplelist:  # people = random.randint(1,99)
                 print(street, "\t", house, "\t", people)
                 population += people
     print("Количество населения :", population, "человек")
