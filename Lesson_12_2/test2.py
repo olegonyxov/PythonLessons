@@ -45,3 +45,6 @@ def nachepatat():
 
 
 nachepatat()
+class People:
+    people = random.randint(1, 99)
+    return random.randint(1, 99)
