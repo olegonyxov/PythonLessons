@@ -2,13 +2,13 @@ import random
 
 
 class House:
-    peoples = random.randint(1, 99)
+    people = random.randint(1, 99)
 
     def peoples_count(self, pcount):
-        self.peoples += pcount
+        self.people += pcount
 
     def get_peoples_c(self):
-        return self.peoples
+        return self.people
 
 
 class Street:
@@ -36,14 +36,14 @@ class City:
 def nachepatat_poshitat():
     peoplelist = []
     population = 0
-    for i in range(1, House.peoples):
+    for i in range(1, House.people):
         peoplelist.append(random.randrange(1, 99))
     print("Улица", 'Дом', 'Населенме', )
     for street in City.streetlist:
         for house in Street.houselist:
-            for peoples in peoplelist:
-                print(street, "\t", house, "\t", peoples)
-                population += peoples
+            for people in peoplelist:
+                print(street, "\t", house, "\t", people)
+                population += people
     print("Количество населения :", population, "человек")
 
 
