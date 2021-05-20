@@ -1,4 +1,5 @@
 import csv
+
 # from datetime import datetime
 # selldate = datetime.now().strftime('%Y-%m-%d')
 filename = 'C:\\tr1\\inventory.csv'
@@ -13,7 +14,8 @@ class Store:
         with open(filename, "r", encoding='utf-8') as file1:
             reader = csv.DictReader(file1, delimiter=",")
             for item in reader:
-                dict1 = {"Наименование": item["Наименование"], "Тип": item["Тип"], "Цена": int(item["Цена"]), "Количество": 5}
+                dict1 = {"Наименование": item["Наименование"], "Тип": item["Тип"], "Цена": int(item["Цена"]),
+                         "Количество": 5}
                 self.storagelist.append(dict1)
         return self.storagelist
 
