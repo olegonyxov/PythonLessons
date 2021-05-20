@@ -2,7 +2,6 @@ import csv
 # from datetime import datetime
 # selldate = datetime.now().strftime('%Y-%m-%d')
 filename = 'C:\\tr1\\inventory.csv'
-dictlist = []
 
 
 class Store:
