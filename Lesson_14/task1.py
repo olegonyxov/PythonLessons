@@ -1,7 +1,6 @@
 import csv
-from datetime import datetime
-
-selldate = datetime.now().strftime('%Y-%m-%d')
+# from datetime import datetime
+# selldate = datetime.now().strftime('%Y-%m-%d')
 filename = 'C:\\tr1\\inventory.csv'
 dictlist = []
 
@@ -52,10 +51,9 @@ class Product(Store):
         examp = self.getfile()[1]
         return print(str({examp["Тип"]: examp["Наименование"], "Ценв": examp["Цена"]}))
 
-
-kofeita = Store()
-print(kofeita.getfile())
-print(kofeita.get_remains_price())
-print(kofeita.get_ptype_list("coffee"))
-pempa = Product()
-print(pempa)
+# kofeita = Store()
+# print(kofeita.getfile())
+# print(kofeita.get_remains_price())
+# print(kofeita.get_ptype_list("coffee"))
+# pempa = Product()
+# print(pempa)
