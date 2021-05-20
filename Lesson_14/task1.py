@@ -7,17 +7,17 @@ filename = 'C:\\tr1\\inventory.csv'
 
 class Store:
     balanse = 0
-    storagelist = []
 
     def getfile(self):
+        storagelist = []
 
         with open(filename, "r", encoding='utf-8') as file1:
             reader = csv.DictReader(file1, delimiter=",")
             for item in reader:
                 dict1 = {"Наименование": item["Наименование"], "Тип": item["Тип"], "Цена": int(item["Цена"]),
                          "Количество": 5}
-                self.storagelist.append(dict1)
-        return self.storagelist
+                storagelist.append(dict1)
+        return storagelist
 
     def get_ptype_list(self, ptype):
         ptypelist = []
@@ -52,9 +52,9 @@ class Product(Store):
         examp = self.getfile()[1]
         return print(str({examp["Тип"]: examp["Наименование"], "Ценв": examp["Цена"]}))
 
-# kofeita = Store()
+kofeita = Store()
 # print(kofeita.getfile())
-# print(kofeita.get_remains_price())
-# print(kofeita.get_ptype_list("coffee"))
+print(kofeita.get_remains_price())
+print(kofeita.get_ptype_list("coffee"))
 # pempa = Product()
 # print(pempa)
