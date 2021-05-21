@@ -2,7 +2,6 @@ import csv
 
 
 class Product:
-
     def __init__(self, pname, ptype, pprice):
         self.pname = pname
         self.ptype = ptype
