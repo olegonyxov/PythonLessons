@@ -49,8 +49,8 @@ class Store:
     def sell_item(self, pname):
         for p in self.storagelist:
             if p.pname == pname:
-                self.storagelist.remove(p)
                 self.balanse += int(p.pprice)
+                self.storagelist.remove(p)
                 break
 
 
