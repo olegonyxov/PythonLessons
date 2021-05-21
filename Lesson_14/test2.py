@@ -13,8 +13,8 @@ class Product:
         self.pprice = pprice
 
     def __repr__(self):  # хрень
-        repra = str(self.ptype), str(self.pname, ), str(self.pprice)
-        return str(repra)
+        repre = self.ptype,self.pname,self.pprice
+        return str(repre)
 
 
 class Store:
