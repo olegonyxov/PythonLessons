@@ -7,13 +7,13 @@ class Product:
         self.ptype = ptype
         self.pprice = pprice
 
-    def __repr__(self):
-        repres = (self.pname, self.ptype, self.pprice)
-        return str(repres)
-
     def __str__(self):
         sstr = {self.ptype: self.pname, "Цена": self.pprice}
         return str(sstr)
+
+    # def __repr__(self):
+    #     repres = (self.pname, self.ptype, self.pprice)
+    #     return str(repres)
 
 
 class Store:
