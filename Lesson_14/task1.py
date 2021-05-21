@@ -59,11 +59,11 @@ class Store:
 
 if __name__ == "__main__":
     filename = 'C:\\tr1\\inventory.csv'
-    kofeita = Store()
-    kofeita.getfile()
-    print(kofeita.get_balance())
-    print(kofeita.get_ptype_list("coffee"))
-    print(kofeita.get_remains_price())
-    kofeita.sell_item("Эспрессо")
-    print(kofeita.get_ptype_list("coffee"))
-    print(kofeita.get_balance())
+    # kofeita = Store()
+    # kofeita.getfile()
+    # print(kofeita.get_balance())
+    # print(kofeita.get_ptype_list("coffee"))
+    # print(kofeita.get_remains_price())
+    # kofeita.sell_item("Эспрессо")
+    # print(kofeita.get_ptype_list("coffee"))
+    # print(kofeita.get_balance())
