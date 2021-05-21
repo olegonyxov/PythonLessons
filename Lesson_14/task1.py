@@ -13,8 +13,8 @@ class Product:
         self.pprice = pprice
 
     def __repr__(self):
-        repre = self.ptype, self.pname, self.pprice
-        return str(repre)
+        repres = "Кофе: Эспрессо, цена: 27грн."
+        return str(repres)
 
 
 class Store:
@@ -66,3 +66,4 @@ print(kofeita.get_remains_price())
 kofeita.sell_item("Эспрессо")
 print(kofeita.get_ptype_list("coffee"))
 print(kofeita.balanse)
+print(Product)

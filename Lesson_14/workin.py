@@ -1,9 +1,5 @@
 import csv
 
-# from datetime import datetime
-# selldate = datetime.now().strftime('%Y-%m-%d')
-filename = 'C:\\tr1\\inventory.csv'
-
 
 class Product:
 
@@ -13,7 +9,7 @@ class Product:
         self.pprice = pprice
 
     def __repr__(self):
-        repre = self.ptype, self.pname, self.pprice
+        repre = {self.ptype: self.pname, "Цена": self.pprice}
         return str(repre)
 
 
@@ -66,3 +62,6 @@ print(kofeita.get_remains_price())
 kofeita.sell_item("Эспрессо")
 print(kofeita.get_ptype_list("coffee"))
 print(kofeita.balanse)
+
+if __name__ == "__main__":
+    filename = 'C:\\tr1\\inventory.csv'
