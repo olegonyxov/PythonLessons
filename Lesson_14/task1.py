@@ -9,6 +9,10 @@ class Product:
         self.pprice = pprice
 
     def __repr__(self):
+        repres = (self.pname, self.ptype, self.pprice)
+        return str(repres)
+
+    def __str__(self):
         repres = {self.ptype: self.pname, "Цена": self.pprice}
         return str(repres)
 
@@ -24,7 +28,7 @@ class Store:
         else:
             return print("only tea and coffee")
 
-    def getfile(self,quantity=5):
+    def getfile(self, quantity=5):
         with open(filename, "r", encoding='utf-8') as file1:
             reader = csv.DictReader(file1)
             for item in reader:
@@ -58,11 +62,12 @@ class Store:
 
 if __name__ == "__main__":
     filename = 'C:\\tr1\\inventory.csv'
-    # kofeita = Store()
-    # kofeita.getfile()
-    # print(kofeita.get_balance())
-    # print(kofeita.get_ptype_list("coffee"))
-    # print(kofeita.get_remains_price())
-    # kofeita.sell_item("Эспрессо")
-    # print(kofeita.get_ptype_list("coffee"))
-    # print(kofeita.get_balance())
+    kofeita = Store()
+    kofeita.getfile()
+    print(kofeita.get_balance())
+    print(kofeita.get_ptype_list("coffee"))
+    print(kofeita.get_remains_price())
+    kofeita.sell_item("Эспрессо")
+    print(kofeita.get_ptype_list("coffee"))
+    print(kofeita.get_balance())
+    print(Product("1", "2", "3"))
