@@ -20,13 +20,6 @@ class Store:
     __balanse = 0
     __storagelist = []
 
-    def add_product(self, pname, ptype, pprice):
-        if ptype == "tea" or ptype == "coffee":
-            self.__storagelist.append(Product(pname, ptype, pprice))
-            return "product added to storage"
-        else:
-            return print("only tea and coffee")
-
     def getfile(self, quantity=5):
         with open(filename, "r", encoding='utf-8') as file1:
             reader = csv.DictReader(file1)
@@ -57,6 +50,13 @@ class Store:
 
     def get_balance(self):
         return self.__balanse
+
+    def add_product(self, pname, ptype, pprice):
+        if ptype == "tea" or ptype == "coffee":
+            self.__storagelist.append(Product(pname, ptype, pprice))
+            return "product added to storage"
+        else:
+            return print("only tea and coffee")
 
 
 if __name__ == "__main__":
