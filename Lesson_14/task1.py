@@ -56,7 +56,7 @@ class Store:
             self.__storagelist.append(Product(pname, ptype, pprice))
             return "product added to storage"
         else:
-            return print("only tea and coffee")
+            return print("only tea or coffee")
 
 
 if __name__ == "__main__":
