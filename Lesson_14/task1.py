@@ -52,8 +52,10 @@ class Store:
                 self.__balanse += int(p.pprice)
                 self.__storagelist.remove(p)
                 break
+
     def get_balance(self):
         return self.__balanse
+
 
 if __name__ == "__main__":
     filename = 'C:\\tr1\\inventory.csv'
