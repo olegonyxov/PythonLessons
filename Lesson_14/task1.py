@@ -13,8 +13,8 @@ class Product:
         return str(repres)
 
     def __str__(self):
-        repres = {self.ptype: self.pname, "Цена": self.pprice}
-        return str(repres)
+        sstr = {self.ptype: self.pname, "Цена": self.pprice}
+        return str(sstr)
 
 
 class Store:
