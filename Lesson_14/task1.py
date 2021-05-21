@@ -24,7 +24,7 @@ class Store:
     def getfile(self):
 
         with open(filename, "r", encoding='utf-8') as file1:
-            reader = csv.DictReader(file1,delimiter=",")
+            reader = csv.DictReader(file1, delimiter=",")
             bycond = 5
             for item in reader:
                 for a in range(bycond):
