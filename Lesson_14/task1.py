@@ -1,9 +1,5 @@
 import csv
 
-# from datetime import datetime
-# selldate = datetime.now().strftime('%Y-%m-%d')
-filename = 'C:\\tr1\\inventory.csv'
-
 
 class Product:
 
@@ -13,7 +9,7 @@ class Product:
         self.pprice = pprice
 
     def __repr__(self):
-        repres = "Кофе: Эспрессо, цена: 27грн."
+        repres = {self.ptype: self.pname, "Цена": self.pprice}
         return str(repres)
 
 
@@ -30,7 +26,7 @@ class Store:
 
     def getfile(self):
         with open(filename, "r", encoding='utf-8') as file1:
-            reader = csv.DictReader(file1, delimiter=",")
+            reader = csv.DictReader(file1)
             bycond = 5
             for item in reader:
                 for a in range(bycond):
@@ -58,12 +54,13 @@ class Store:
                 break
 
 
-kofeita = Store()
-kofeita.getfile()
-print(kofeita.balanse)
-print(kofeita.get_ptype_list("coffee"))
-print(kofeita.get_remains_price())
-kofeita.sell_item("Эспрессо")
-print(kofeita.get_ptype_list("coffee"))
-print(kofeita.balanse)
-print(Product)
+if __name__ == "__main__":
+    filename = 'C:\\tr1\\inventory.csv'
+    # kofeita = Store()
+    # kofeita.getfile()
+    # print(kofeita.balanse)
+    # print(kofeita.get_ptype_list("coffee"))
+    # print(kofeita.get_remains_price())
+    # kofeita.sell_item("Эспрессо")
+    # print(kofeita.get_ptype_list("coffee"))
+    # print(kofeita.balanse)
