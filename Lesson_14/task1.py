@@ -5,56 +5,63 @@ import csv
 filename = 'C:\\tr1\\inventory.csv'
 
 
-class Store:
-    balanse = 0
+class Product:
 
-    def getfile(self):
-        storagelist = []
-
-        with open(filename, "r", encoding='utf-8') as file1:
-            reader = csv.DictReader(file1, delimiter=",")
-            for item in reader:
-                dict1 = {"Наименование": item["Наименование"], "Тип": item["Тип"], "Цена": int(item["Цена"]),
-                         "Количество": 5}
-                storagelist.append(dict1)
-        return storagelist
-
-    def get_ptype_list(self, ptype):
-        ptypelist = []
-        for pdict in self.getfile():
-            if pdict['Тип'] == ptype or ptype == "all":
-                ptypelist.append(pdict)
-        return ptypelist
-
-    def get_remains_price(self):
-        remains_price = 0
-        for pdict in self.getfile():
-            remains_price += int(pdict["Цена"]) * int(pdict['Количество'])
-        return remains_price
-
-    def sell_item(self, pname, pcount):
-        for pdict in self.getfile():
-            if pdict["Наименование"] == pname and pdict["Количество"] > pcount:
-                pdict["Количество"] -= int(pcount)
-                self.balanse += pdict["Цена"] * int(pcount)
-            else:
-                print("Incorrect input")
-
-
-class Product(Store):
-
-    def __init__(self, pname="", ptype="", pprice=""):
+    def __init__(self, pname, ptype, pprice):
         self.pname = pname
         self.ptype = ptype
         self.pprice = pprice
 
-    def __repr__(self):
-        examp = self.getfile()[1]
-        return print(str({examp["Тип"]: examp["Наименование"], "Ценв": examp["Цена"]}))
+    def __repr__(self):  # хрень
+        repra = str(self.ptype), str(self.pname, ), str(self.pprice)
+        return str(repra)
+
+
+class Store:
+    balanse = 0
+    storagelist = []
+
+    def getfile(self):
+
+        with open(filename, "r", encoding='utf-8') as file1:
+            reader = csv.DictReader(file1,delimiter=",")
+            bycond = 5
+            for item in reader:
+                for a in range(bycond):
+                    self.storagelist.append(Product(item["Наименование"], item["Тип"], item["Цена"]))
+        return self.storagelist
+
+    def get_ptype_list(self, ptype=""):
+        ptypelist = []
+        for p in self.storagelist:
+            if p.ptype == ptype or ptype == "":
+                ptypelist.append([p.pname, p.ptype, p.pprice])
+        return ptypelist
+
+    def get_remains_price(self):
+        remains_price = 0
+        for p in self.storagelist:
+            remains_price += int(p.pprice)
+        return remains_price
+
+    def sell_item(self, pname):
+        for p in self.storagelist:
+            if p.pname == pname:
+                self.storagelist.remove(p)
+                self.balanse += int(p.pprice)
+                break
+
 
 kofeita = Store()
-# print(kofeita.getfile())
-print(kofeita.get_remains_price())
-print(kofeita.get_ptype_list("coffee"))
+kofeita.getfile()
+# print(kofeita.balanse)
+# print(kofeita.get_ptype_list("coffee"))
+# print(kofeita.get_remains_price())
+# kofeita.sell_item("Эспрессо")
+# print(kofeita.balanse)
+# print(kofeita.get_remains_price())
+# print(Product)
+# print(kofeita.get_remains_price())
+# print(kofeita.get_ptype_list("coffee"))
 # pempa = Product()
 # print(pempa)

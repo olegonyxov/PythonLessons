@@ -1,61 +1,67 @@
 import csv
-import json
-from datetime import datetime
 
-selldate = datetime.now().strftime('%Y-%m-%d')
+# from datetime import datetime
+# selldate = datetime.now().strftime('%Y-%m-%d')
 filename = 'C:\\tr1\\inventory.csv'
-storage = []
-dictlist =[]
-storage = storage*5
-with open(filename, "r", encoding='utf-8') as file1:
-    reader = csv.DictReader(file1, delimiter=",")
-    for row in reader:
-        storage.append([row["Наименование"], row["Тип"], row["Цена"]])
-        dict2={"Наименование":row["Наименование"],"Тип": row["Тип"],"Цена": row["Цена"]}
-        dictlist.append(dict2)
-print(storage)
-print(dictlist)
-
-# name = (name[1] for name in storage)
-# ptype = (tipe[2] for tipe in storage)
-# price = (price[3] for price in storage)
 
 
+class Product:
 
-
-class Product():
-
-    def __init__(self, pname, ptype,):
+    def __init__(self, pname, ptype, pprice):
         self.pname = pname
         self.ptype = ptype
-        self.price = int
-        self.pcount= 5
+        self.pprice = pprice
 
-    def get_price(self):
-        print(self.pname,self.ptype)
-        for smth in storage:
-            if self.pname == smth[0] and self.ptype == smth[1]:
-                self.price = int(smth[2])
-        return self.price
+    def __repr__(self):  # хрень
+        repra = str(self.ptype), str(self.pname, ), str(self.pprice)
+        return str(repra)
 
 
-class Shop():
+class Store:
+    balanse = 0
+    storagelist = []
 
-    tradelist = []
-    balance = 0
-    goods = storage
+    def getfile(self):
 
-    def sellin(self):
-        self.balance += int
+        with open(filename, "r", encoding='utf-8') as file1:
+            reader = csv.DictReader(file1,delimiter=",")
+            bycond = 5
+            for item in reader:
+                for a in range(bycond):
+                    self.storagelist.append(Product(item["Наименование"], item["Тип"], item["Цена"]))
+        return self.storagelist
 
-    def buyin(self):
-        self.balance -= ""
+    def get_ptype_list(self, ptype=""):
+        ptypelist = []
+        for p in self.storagelist:
+            if p.ptype == ptype or ptype == "":
+                ptypelist.append([p.pname, p.ptype, p.pprice])
+        return ptypelist
+
+    def get_remains_price(self):
+        remains_price = 0
+        for p in self.storagelist:
+            remains_price += int(p.pprice)
+        return remains_price
+
+    def sell_item(self, pname):
+        for p in self.storagelist:
+            if p.pname == pname:
+                self.storagelist.remove(p)
+                self.balanse += int(p.pprice)
+                break
 
 
-a = 'Эспрессо'
-b = 'coffee'
-espresso=Product(a,b)
-print(espresso.get_price())
-
-
-kaviarnia = Shop()
+kofeita = Store()
+kofeita.getfile()
+# print(kofeita.balanse)
+# print(kofeita.get_ptype_list("coffee"))
+# print(kofeita.get_remains_price())
+# kofeita.sell_item("Эспрессо")
+# print(kofeita.balanse)
+# print(kofeita.get_remains_price())
+# print(Product)
+# print(kofeita.get_remains_price())
+# print(kofeita.get_ptype_list("coffee"))
+# pempa = Product()
+# print(pempa)
