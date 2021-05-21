@@ -14,12 +14,12 @@ class Product:
 
 
 class Store:
-    balanse = 0
-    storagelist = []
+    __balanse = 0
+    __storagelist = []
 
     def add_product(self, pname, ptype, pprice):
         if ptype == "tea" or ptype == "coffee":
-            self.storagelist.append(Product(pname, ptype, pprice))
+            self.__storagelist.append(Product(pname, ptype, pprice))
             return "product added to storage"
         else:
             return print("only tea and coffee")
@@ -30,37 +30,40 @@ class Store:
             bycond = 5
             for item in reader:
                 for a in range(bycond):
-                    self.storagelist.append(Product(item["Наименование"], item["Тип"], item["Цена"]))
-        return self.storagelist
+                    self.__storagelist.append(Product(item["Наименование"], item["Тип"], item["Цена"]))
+        return self.__storagelist
 
     def get_ptype_list(self, ptype=""):
         ptypelist = []
-        for p in self.storagelist:
+        for p in self.__storagelist:
             if p.ptype == ptype or ptype == "":
                 ptypelist.append([p.pname, p.ptype, p.pprice])
         return ptypelist
 
     def get_remains_price(self):
         remains_price = 0
-        for p in self.storagelist:
+        for p in self.__storagelist:
             remains_price += int(p.pprice)
         return remains_price
 
     def sell_item(self, pname):
-        for p in self.storagelist:
+        for p in self.__storagelist:
             if p.pname == pname:
-                self.storagelist.remove(p)
-                self.balanse += int(p.pprice)
+                self.__balanse += int(p.pprice)
+                self.__storagelist.remove(p)
                 break
+
+    def get_balance(self):
+        return self.__balanse
 
 
 if __name__ == "__main__":
     filename = 'C:\\tr1\\inventory.csv'
-    kofeita = Store()
-    kofeita.getfile()
-    print(kofeita.balanse)
-    print(kofeita.get_ptype_list("coffee"))
-    print(kofeita.get_remains_price())
-    kofeita.sell_item("Эспрессо")
-    print(kofeita.get_ptype_list("coffee"))
-    print(kofeita.balanse)
+    # kofeita = Store()
+    # kofeita.getfile()
+    # print(kofeita.get_balance())
+    # print(kofeita.get_ptype_list("coffee"))
+    # print(kofeita.get_remains_price())
+    # kofeita.sell_item("Эспрессо")
+    # print(kofeita.get_ptype_list("coffee"))
+    # print(kofeita.get_balance())
