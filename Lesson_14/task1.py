@@ -24,12 +24,11 @@ class Store:
         else:
             return print("only tea and coffee")
 
-    def getfile(self):
+    def getfile(self,quantity=5):
         with open(filename, "r", encoding='utf-8') as file1:
             reader = csv.DictReader(file1)
-            bycond = 5
             for item in reader:
-                for a in range(bycond):
+                for a in range(quantity):
                     self.__storagelist.append(Product(item["Наименование"], item["Тип"], item["Цена"]))
         return self.__storagelist
 
