@@ -2,7 +2,7 @@ import re
 
 
 def check_numb(str1):
-    renew = "".join(re.findall(r'\d*\d+|\d+', str1))
+    renew = "".join(re.findall(r'\d*', str1))
     if renew[0] == "3":
         renew = renew[2:-1]
     if len(renew) == 10:
