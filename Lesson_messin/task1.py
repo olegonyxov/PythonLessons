@@ -12,7 +12,7 @@ def checkregion():
         with open(filename, "r", encoding='utf-8') as file1:
             reader = csv.DictReader(file1)
             for row in reader:
-                if str1[0:2] == row["Код 2004"] or str1[0:2] ==row["Код 2013"]:
+                if str1[0:2] in (row["Код 2004"],["Код 2013"]):
                     print("Номер зарегестрирован в ", row["Регіон"])
     else:
         print("Строка не является автомобильным номером")

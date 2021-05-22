@@ -1,12 +1,16 @@
-l1 = (6,7)
+# l1 = (6,7)
+#
+# for i in l1:
+#     if i in (1,2,3,4):
+#         print(i)
+# else:
+#         print("no")
 
-for i in l1:
-    if i in (1,2,3,4):
-        print(i)
+la = 6
+if la in (1,2,3,4,5):
+    print("ok")
 else:
-        print("no")
-
-
+    print("no")
 
 
 
