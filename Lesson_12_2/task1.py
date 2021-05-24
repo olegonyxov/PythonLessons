@@ -1,59 +1,73 @@
-import random
-from pprint import pprint
+
+import csv
 
 
-class House:
-    people = int
+class Product:
+    def __init__(self, pname, ptype, pprice):
+        self.pname = pname
+        self.ptype = ptype
+        self.pprice = pprice
 
-    def peoples_count(self, pcount):
-        self.people += pcount
+    def __str__(self):
+        sstr = {self.ptype: self.pname, "Цена": self.pprice}
+        return str(sstr)
 
-    def get_peoples_c(self):
-        return self.people
-
-
-class Street:
-    houses = int
-
-    def houses_count(self, hcount):
-        self.houses += hcount
-
-    def get_houses_c(self):
-        return print(self.houses)
+    # def __repr__(self):
+    #     repres = (self.pname, self.ptype, self.pprice)
+    #     return str(repres)
 
 
-class City:
-    peoplelist = []
-    streets = int
+class Store:
+    __balanse = 0
+    __storagelist = []
 
-    def streets_count(self, scount):
-        self.streets += scount
+    def getfile(self, quantity=5):
+        with open(filename, "r", encoding='utf-8') as file1:
+            reader = csv.DictReader(file1)
+            for item in reader:
+                for a in range(quantity):
+                    self.__storagelist.append(Product(item["Наименование"], item["Тип"], item["Цена"]))
+        return self.__storagelist
 
-    def get_streets_c(self):
-        return print(self.streets)
+    def get_ptype_list(self, ptype=""):
+        ptypelist = []
+        for p in self.__storagelist:
+            if p.ptype == ptype or ptype == "":
+                ptypelist.append([p.pname, p.ptype, p.pprice])
+        return ptypelist
 
-    def full_em(self):
-        finlist = []
-        for street in range(1, random.randint(1, 5)):  #
-            for house in range(1, random.randint(1, 20)):
-                Street.houses = house
-                self.streets = street
-                people = random.randint(1, 99)
-                self.peoplelist.append(people)
-                finlist.append([street, house, people])
-        return finlist
+    def get_remains_price(self):
+        remains_price = 0
+        for p in self.__storagelist:
+            remains_price += int(p.pprice)
+        return remains_price
 
-    def get_population(self):
-        population = sum(pep for pep in self.peoplelist)
-        return print(population)
+    def sell_item(self, pname):
+        for p in self.__storagelist:
+            if p.pname == pname:
+                self.__balanse += int(p.pprice)
+                self.__storagelist.remove(p)
+                break
 
-    def print_it(self):
-        print("Улица", 'Дом', 'Население')
-        for result in self.full_em():
-            print(result[0], "\t", result[1], " ", result[2])
+    def get_balance(self):
+        return self.__balanse
+
+    def add_product(self, pname, ptype, pprice):
+        if ptype == "tea" or ptype == "coffee":
+            self.__storagelist.append(Product(pname, ptype, pprice))
+            return "product added to storage"
+        else:
+            return print("only tea or coffee")
 
 
-# newCity = City()
-# newCity.print_it()
-# newCity.get_population()
-# newCity.get_streets_c()
+if __name__ == "__main__":
+    filename = 'C:\\tr1\\inventory.csv'
+    # kofeita = Store()
+    # kofeita.getfile()
+    # print(kofeita.get_balance())
+    # print(kofeita.get_ptype_list("coffee"))
+    # print(kofeita.get_remains_price())
+    # kofeita.sell_item("Эспрессо")
+    # print(kofeita.get_ptype_list("coffee"))
+    # print(kofeita.get_balance())
+    # print(Product("1", "2", "3"))
