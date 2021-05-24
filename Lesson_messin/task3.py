@@ -1,12 +1,31 @@
 import re
-istring = "dasdasdASDASD12312$#@-+="
-if re.search(r"\w[a-z]", istring)[0]:
-    if re.search(r"\w[A-Z]", istring)[0]:
-        if re.search(r"\d", istring)[0]:
-            if re.search(r"\W", istring)[0]:
-                if len(istring)>8:
-                    print("password acceptable")
-# if __name__ == "__main__":
-#     istring = input(str("Input your password:"))
 
-    # istring = "dasdasdASDASD12312$#@-+="
+a = 0
+istring = "dasdasdASDASD12312$#@-+="
+if re.search(r"\w[a-z]", istring):
+    pass
+else:
+    a = 1
+    print("Хотя бы одна маленькая буква")
+if re.search(r"\w[A-Z]", istring):
+    pass
+else:
+    a = 1
+    print("Хотя бы одна большая буква")
+if re.search(r"\d", istring):
+    pass
+else:
+    a = 1
+    print("Хотя бы одна цифра")
+if re.search(r"\W", istring):
+    pass
+else:
+    a = 1
+    print("Хотя бы однид символ $#@-+= ")
+if len(istring) > 8:
+    pass
+else:
+    a = 1
+    print("Хотя бы 8 символов")
+if a == 0:
+    print("password accepted")
