@@ -19,6 +19,6 @@ def checkregion():
 
 
 if __name__ == "__main__":
-    str1 = "АН3231АЕ"
+    str1 = "AI3231AE"
     filename = 'C:\\tr1\\ua_auto.csv'
     checkregion()
