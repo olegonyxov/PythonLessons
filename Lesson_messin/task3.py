@@ -1,7 +1,9 @@
 import re
 
+# istring = "dasdasdASDASD12312$#@-+="
+istring = input(str("Input new password:"))
+
 a = 0
-istring = "dasdasdASDASD12312$#@-+="
 if re.search(r"\w[a-z]", istring):
     pass
 else:
