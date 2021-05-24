@@ -28,7 +28,8 @@ def checkregion():
 
 
 if __name__ == "__main__":
-    str1 = "АН3231АЕ"
+    # str1 = "АН3231АЕ"
+    str1 = input(str("Input car Number:"))
     filename = 'C:\\tr1\\ua_auto.csv'
     translatefile = 'C:\\tr1\\translateautonumb.csv'
     translate()
