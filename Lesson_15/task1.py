@@ -1,7 +1,16 @@
-
 import argparse
 import csv
 import re
+
+parser = argparse.ArgumentParser(description="find_corona")
+parser.add_argument('--iata_code', default=None, nargs='?')
+parser.add_argument('--country', default=None, nargs='?')
+parser.add_argument('--name', default=None, nargs='?')
+args = parser.parse_args()
+datafile = 'C:\\tr1\\airport-codes_csv.csv'
+iata_code = args.iata_code
+country = args.country
+name = args.name
 
 
 def check_iata():
@@ -27,23 +36,9 @@ def find_match():
     with open(datafile, "r", encoding='utf-8') as file1:
         reader = csv.DictReader(file1)
         for line in reader:
-            for strings in line.values():
-                if strings.rfind(check_args()[0]) >= 0:
-                    print(line)
-                else:
-                    raise FileExistsError("NoAirportFoundError")
+            for string in line.values():
+                if re.match(r"\w{3}",string):
+                    if check_args()[0] == re.match(r"\w{3}", string)[0]:
+                        print(line)
 
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="find_corona")
-    parser.add_argument('--iata_code', default=None, nargs='?')
-    parser.add_argument('--country', default=None, nargs='?')
-    parser.add_argument('--name', default=None, nargs='?')
-    args= parser.parse_args()
-    datafile = 'C:\\tr1\\airport-codes_csv.csv'
-    iata_code = args.iata_code
-    country = args.country
-    name = args.name
-
-
-    find_match()
+find_match()
