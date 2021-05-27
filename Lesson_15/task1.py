@@ -2,11 +2,13 @@ import argparse
 import csv
 import re
 
+
 def check_iata():
     if iata_code:
         if iata_code != re.match(r"\w{3}", iata_code)[0].upper():
             raise ValueError("incorrect iata_code")
     return iata_code
+
 
 def check_args():
     argslist = []
@@ -27,6 +29,8 @@ def find_match():
             for str in line.values():
                 if str.find(check_args()[0]) >= 0:
                     print(line)
+                else:
+                    raise FileExistsError("NoAirportFoundError")
 
 
 if __name__ == "__main__":
