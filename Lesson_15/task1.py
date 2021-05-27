@@ -28,7 +28,7 @@ def find_match():
         reader = csv.DictReader(file1)
         for line in reader:
             for strings in line.values():
-                if strings.find(check_args()[0]) >= 0:
+                if strings.ffind(check_args()[0]) >= 0:
                     print(line)
                 else:
                     raise FileExistsError("NoAirportFoundError")
