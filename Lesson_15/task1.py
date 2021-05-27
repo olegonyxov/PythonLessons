@@ -26,8 +26,8 @@ def find_match():
     with open(datafile, "r", encoding='utf-8') as file1:
         reader = csv.DictReader(file1)
         for line in reader:
-            for str in line.values():
-                if str.find(check_args()[0]) >= 0:
+            for strings in line.values():
+                if strings.find(check_args()[0]) >= 0:
                     print(line)
                 else:
                     raise FileExistsError("NoAirportFoundError")
@@ -38,10 +38,11 @@ if __name__ == "__main__":
     parser.add_argument('--iata_code', default=None, nargs='?')
     parser.add_argument('--country', default=None, nargs='?')
     parser.add_argument('--name', default=None, nargs='?')
-    argsdict = vars(parser.parse_args())
-    datafile = str('C:\\tr1\\airport-codes_csv.csv')
-    iata_code = argsdict['iata_code']
-    country = argsdict['country']
-    name = argsdict['name']
+    args= parser.parse_args()
+    datafile = 'C:\\tr1\\airport-codes_csv.csv'
+    iata_code = args.iata_code
+    country = args.country
+    name = args.name
 
-    find_match()
+
+    print(check_args()[2])
