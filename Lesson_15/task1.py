@@ -2,17 +2,15 @@ import argparse
 import csv
 import re
 
+def check_iata():
+    if iata_code:
+        if iata_code != re.match(r"\w{3}", iata_code)[0].upper():
+            raise ValueError("incorrect iata_code")
+    return iata_code
 
 def check_args():
     argslist = []
-    if iata_code:
-        if iata_code == re.match(r"\w{3}", iata_code)[0].upper():
-            pass
-        else:
-            raise ValueError("incorrect iata_code")
-    else:
-        pass
-    for arg in (iata_code, country, name):
+    for arg in (check_iata(), country, name):
         if arg:
             argslist.append(arg)
     if len(argslist) > 1:
