@@ -36,8 +36,9 @@ def find_match():
     with open(datafile, "r", encoding='utf-8') as file1:
         reader = csv.DictReader(file1)
         for line in reader:
-            for string in line.values():
-                if re.search(rf"{check_args()[0]}",string):
+            for string in (line['name'], line['iata_code'], line['iso_country']):
+                if re.search(rf"{check_args()[0]}", string):
                     print(line)
+
 
 find_match()
