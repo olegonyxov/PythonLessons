@@ -37,8 +37,7 @@ def find_match():
         reader = csv.DictReader(file1)
         for line in reader:
             for string in line.values():
-                if re.match(r"\w{3}",string):
-                    if check_args()[0] == re.match(r"\w{3}", string)[0]:
-                        print(line)
+                if re.search(rf"{check_args()[0]}",string):
+                    print(line)
 
 find_match()
