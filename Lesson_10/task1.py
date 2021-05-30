@@ -4,7 +4,7 @@ def writetofile(i_string):  # ради практики- в тхт
             i_string = input("input some string:")
             if i_string != "":
                 file1.write(i_string), file1.write("\n")
-                print("string added to file")
+        print("strings added to file")
 
 
 if __name__ == "__main__":
