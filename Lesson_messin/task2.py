@@ -8,7 +8,7 @@ def check_len(pnumber):
     if len(renew) == 10:
         return "{} {} {}-{}-{}".format("(+38)", renew[0:3], renew[3:6], renew[6:8], renew[8:10])
     else:
-        print("incorrect inputa")
+        print("incorrect input")
         return False
 
 
@@ -17,7 +17,7 @@ def check_input(pnumber):
         print(check_len(pnumber))
         return True
     else:
-        print("incorrect inputb")
+        print("incorrect input")
         return False
 
 
