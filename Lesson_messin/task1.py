@@ -27,7 +27,7 @@ def checkregion():
     with open(filename, "r", encoding='utf-8') as file1:
         reader = csv.DictReader(file1)
         for row in reader:
-            if re.match(r'^\w{2}', workstring)[0] in (row["Код 2004"], ["Код 2013"]):
+            if re.match(r'^\w{2}', workstring)[0] in (row["Код 2004"], row["Код 2013"]):
                 return "Номер зарегестрирован в "+row["Регіон"]
         else:
             return "Строка не найдена в таблице регионов"
