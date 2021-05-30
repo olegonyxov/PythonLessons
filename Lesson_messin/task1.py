@@ -3,33 +3,40 @@ import re
 
 
 def checkshtring():
-    if str1 == re.match(r'^\w{2}\d{4}\w{2}', str1)[0]:
-        return "OK"
-
-def translate():
-    with open(translatefile, "r", encoding='utf-8') as file2:
-        reader = csv.DictReader(file2)
-        for row in reader:
-            if str1[0:2] in row["eng"]:
-                str1.replace((str1[0:2]), row["ukr"])
-
-
-def checkregion():
-    print(checkshtring())
-    if checkshtring() == "OK":
-        with open(filename, "r", encoding='utf-8') as file1:
-            reader = csv.DictReader(file1)
-            for row in reader:
-                if str1[0:2] in (row["Код 2004"], ["Код 2013"]):
-                    print("Номер зарегестрирован в ", row["Регіон"])
+    # input_string = str1
+    input_string = input("Введите номер авто:")
+    if input_string == re.match(r'^\w{2}\d{4}\w{2}', input_string)[0]:
+        return input_string, print("Строка является автомобильным номером")
     else:
         print("Строка не является автомобильным номером")
 
 
+def translate():
+    with open(translatefile, "r", encoding='utf-8') as file2:
+        reader = csv.DictReader(file2)
+        workstring = checkshtring()[0]
+        for row in reader:
+            symb2 = re.match(r'^\w{2}', workstring)[0]
+            if symb2 in row["eng"]:
+                workstring.replace(symb2, row["ukr"])
+    return workstring
+
+
+def checkregion():
+    # print(checkshtring())
+    workstring = translate()
+    with open(filename, "r", encoding='utf-8') as file1:
+        reader = csv.DictReader(file1)
+        for row in reader:
+            if re.match(r'^\w{2}', workstring)[0] in (row["Код 2004"], ["Код 2013"]):
+                return "Номер зарегестрирован в "+row["Регіон"]
+        else:
+            return "Строка не найдена в таблице регионов"
+
+
 if __name__ == "__main__":
-    # str1 = "АН3231АЕ"
-    str1 = input(str("Input car Number:"))
+
     filename = 'C:\\tr1\\ua_auto.csv'
     translatefile = 'C:\\tr1\\translateautonumb.csv'
-    translate()
-    checkregion()
+    print(checkregion())
+    # str1 = "АН3231АЕ"
