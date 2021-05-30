@@ -6,7 +6,7 @@ def work_indent():
     wordlist = []
     with open('C:\\tr1\\polid.txt', 'r', encoding='utf-8') as file1:
         for line in file1.readlines():
-            clearline = re.search(r"\w+", line)[0]+"\n"
+            clearline = re.search(r"\w+", line)[0] + "\n"
             ex_indent = len(line) - len(clearline)
             if input_indent < 0:
                 if input_indent < ex_indent:
@@ -24,5 +24,7 @@ def write_file():
         file1.writelines(work_indent())
     return file1
 
-write_file()
-# print(work_indent())
+
+if __name__ == "__main__":
+    write_file()
+    # print(work_indent())

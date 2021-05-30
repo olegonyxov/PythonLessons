@@ -11,4 +11,5 @@ def checkline():
     return wordlist
 
 
-print(checkline())
+if __name__ == "__main__":
+    print(checkline())

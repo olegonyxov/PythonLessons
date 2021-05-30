@@ -1,5 +1,6 @@
-def writetofile(i_string):  # ради практики- в тхт
+def writetofile():  # ради практики- в тхт
     with open('C:\\tr1\\polid.txt', 'w', encoding='utf-8') as file1:
+        i_string = str
         while i_string != "":
             i_string = input("input some string:")
             if i_string != "":
@@ -8,5 +9,4 @@ def writetofile(i_string):  # ради практики- в тхт
 
 
 if __name__ == "__main__":
-    input_string = input(str("input your words"))
-    writetofile(input_string)
+    writetofile()
