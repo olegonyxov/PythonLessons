@@ -34,7 +34,6 @@ def checkregion():
 
 
 if __name__ == "__main__":
-
     filename = 'C:\\tr1\\ua_auto.csv'
     translatefile = 'C:\\tr1\\translateautonumb.csv'
     print(checkregion())

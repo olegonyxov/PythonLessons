@@ -3,7 +3,7 @@ import re
 
 def check_numb(pnumber):
     renew = "".join(re.findall(r'\d*', pnumber))
-    if renew[0:2] == "380":
+    if re.search(r'^\d{3}', renew)[0] == "380":
         renew = renew[2:-1]
     if len(renew) == 10:
         print("{} {} {}-{}-{}".format("(+38)", renew[0:3], renew[3:6], renew[6:8], renew[8:10]))
