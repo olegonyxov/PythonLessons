@@ -1,26 +1,28 @@
-def checklinew(i_indent):
-    newlist = []
+import re
+
+
+def work_indent():
+    input_indent = int(input("input indent parameter:"))
+    wordlist = []
     with open('C:\\tr1\\polid.txt', 'r', encoding='utf-8') as file1:
         for line in file1.readlines():
-            if i_indent >= 0:
-                newlist.append(line.rjust((len(line) + i_indent), " "))
-            if i_indent < 0:
-                indent_count = line.rfind(" ") + 1
-                if abs(i_indent) < indent_count:
-                    line = line.replace(" ", "", (abs(i_indent)))
-                else:  # abs(i_indent) >= indent_count:
-                    line = line[indent_count:]
-                newlist.append(line)
-    print(newlist)
-    return newlist
+            clearline = re.search(r"\w+", line)[0]+"\n"
+            ex_indent = len(line) - len(clearline)
+            if input_indent < 0:
+                if input_indent < ex_indent:
+                    line = " " * (ex_indent + input_indent) + clearline
+                else:
+                    line = clearline
+            else:
+                line = " " * input_indent + line
+            wordlist.append(line)
+    return wordlist
 
 
-def writenew(i_indent):
-    with open('C:\\tr1\\polid.txt', 'r+', encoding='utf-8') as file1:
-        for line in checklinew(i_indent):
-            file1.write(line)
+def write_file():
+    with open('C:\\tr1\\polid.txt', 'w', encoding='utf-8') as file1:
+        file1.writelines(work_indent())
+    return file1
 
-
-if __name__ == "__main__":
-    input_indent = input(str("input needed indent:"))
-    writenew(input_indent)
+write_file()
+# print(work_indent())
