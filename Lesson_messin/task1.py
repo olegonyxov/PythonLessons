@@ -23,7 +23,6 @@ def translate():
 
 
 def checkregion():
-    # print(checkshtring())
     workstring = translate()
     with open(filename, "r", encoding='utf-8') as file1:
         reader = csv.DictReader(file1)
