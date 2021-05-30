@@ -14,7 +14,7 @@ def check_numb(pnumber):
 
 def check_input(pnumber):
     if re.findall(r'\d', pnumber) == re.findall(r'\w', pnumber):
-        check_numb(pnumber)
+        print(check_numb(pnumber))
         return True
     else:
         print("incorrect input")
@@ -22,5 +22,5 @@ def check_input(pnumber):
 
 
 if __name__ == "__main__":
-    i_string = input(str("Input phone number :"))
+    i_string = input("Input phone number :")
     check_input(i_string)
