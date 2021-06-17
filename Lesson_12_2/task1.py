@@ -2,7 +2,7 @@ import random
 
 
 class House:
-    people = ""
+    people = int
 
     def peoples_count(self, pcount):
         self.people += pcount
