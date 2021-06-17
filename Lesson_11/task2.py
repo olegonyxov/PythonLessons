@@ -1,9 +1,7 @@
 import random
 
-string = 'somebody_email@gmail.com'
 
-
-def change_char():
+def change_char(string):
     slices = string.split('@')
     endlist = []
     for word in slices:
@@ -16,4 +14,5 @@ def change_char():
     return endadress
 
 
-print(change_char())
+if __name__ == "__main__":
+    print(change_char('somebody_email@gmail.com'))
