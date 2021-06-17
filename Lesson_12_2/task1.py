@@ -42,6 +42,7 @@ def full_em():
             finlist.append([street, house, people])
     return finlist
 
+
 if __name__ == "__main__":
     print("Улица", 'Дом', 'Население')
     for result in full_em():
