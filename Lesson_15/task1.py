@@ -64,6 +64,7 @@ def searchairport():
     return finlist
 
 
-checkinput()
-check_iata()
-print(searchairport())
+if __name__ == "__main__":
+    checkinput()
+    check_iata()
+    print(searchairport())
