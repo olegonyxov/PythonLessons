@@ -67,6 +67,7 @@ def searchairport():
                 print(finlist)
             else:
                 raise Ex.AirportNotFoundError("Airport not found!")
+    return finlist
 
 
 checkinput()
