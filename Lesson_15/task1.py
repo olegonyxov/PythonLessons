@@ -47,29 +47,23 @@ def searchairport():
             for line in reader:
                 if country == line['iso_country']:
                     finlist.append(line)
-            if len(finlist) >= 1:
-                print(finlist)
-            else:
+            if len(finlist) < 1:
                 raise Ex.CountryNonFoundError("Country not found!")
         if iata_code:
             for line in reader:
                 if iata_code == line['iata_code']:
                     finlist.append(line)
-            if len(finlist) >= 1:
-                print(finlist)
-            else:
+            if len(finlist) < 1:
                 raise Ex.AirportNotFoundError("Airport not found!")
         if name:
             for line in reader:
                 if re.search(rf"{name}", line['name']):
                     finlist.append(line)
-            if len(finlist) >= 1:
-                print(finlist)
-            else:
+            if len(finlist) < 1:
                 raise Ex.AirportNotFoundError("Airport not found!")
     return finlist
 
 
 checkinput()
 check_iata()
-searchairport()
+print(searchairport())
