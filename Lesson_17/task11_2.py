@@ -1,3 +1,4 @@
+
 import random
 
 
@@ -14,4 +15,5 @@ def change_char(string):
     return endadress
 
 
-print(change_char('somebody_email@gmail.com'))
+if __name__ == "__main__":
+    print(change_char('somebody_email@gmail.com'))
