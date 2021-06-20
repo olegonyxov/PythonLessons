@@ -9,8 +9,8 @@ def if_k(inputtempin):
 
 
 def if_f(inputtempin):
-    return "Кельвин:" + str(inputtempin + 459.67 / 1.8) + "Цельсий:" + str(
-        int(inputtempin - 32) / 1.8) + "Фарингейт:" + str(inputtempin)
+    return "Кельвин:" + str(int(inputtempin + 459.67 / 1.8)) + "Цельсий:" + str(
+        int((inputtempin - 32) / 1.8)) + "Фарингейт:" + str(inputtempin)
 
 
 def temperatures(temp, inputscalein):
@@ -26,5 +26,5 @@ def temperatures(temp, inputscalein):
 
 if __name__ == "__main__":
     inputtemp = int(input('input temperature:'))
-    inputscale = str(input('input scale:')).lower
+    inputscale = str(input('input scale:'))
     print(temperatures(inputtemp, inputscale))
