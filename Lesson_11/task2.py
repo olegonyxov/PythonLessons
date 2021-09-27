@@ -16,3 +16,4 @@ def change_char(string):
 
 if __name__ == "__main__":
     print(change_char('somebody_email@gmail.com'))
+    print("111")
